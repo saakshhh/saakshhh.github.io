@@ -4,214 +4,610 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Saksham Singh | Portfolio</title>
+  <meta name="description" content="Portfolio of Saksham Singh, Computer Science student at Purdue University with experience in product, data, AI, and analytics." />
   <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --accent: #2563eb;
+      --accent-dark: #1d4ed8;
+      --border: #e2e8f0;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --max-width: 1100px;
+    }
+
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
       scroll-behavior: smooth;
     }
 
     body {
       font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.6;
-      background: #f8fafc;
-      color: #1e293b;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--accent-dark);
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
     }
 
     header {
-      background: #0f172a;
-      color: white;
-      padding: 20px 10%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       position: sticky;
       top: 0;
+      z-index: 1000;
+      background: rgba(248, 250, 252, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
     }
 
-    header h1 {
-      font-size: 24px;
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+    }
+
+    .brand {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
     }
 
     nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 20px;
-      font-size: 15px;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    nav a:hover {
+      color: var(--text);
     }
 
     section {
-      padding: 70px 10%;
+      padding: 72px 0;
     }
 
     .hero {
-      min-height: 80vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      padding: 96px 0 72px;
     }
 
-    .hero h2 {
-      font-size: 44px;
-      margin-bottom: 15px;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 14px;
+      letter-spacing: 0.02em;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: 1.1;
+      margin-bottom: 18px;
     }
 
     .hero p {
-      font-size: 18px;
+      font-size: 1.08rem;
+      color: var(--muted);
       max-width: 700px;
-      margin-bottom: 25px;
-      color: #334155;
+      margin-bottom: 24px;
     }
 
-    .buttons a {
+    .button-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .btn {
       display: inline-block;
-      margin-right: 15px;
-      padding: 12px 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: 0.2s ease;
+      border: 1px solid transparent;
     }
 
     .btn-primary {
-      background: #2563eb;
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
       color: white;
     }
 
     .btn-secondary {
-      background: #e2e8f0;
-      color: #0f172a;
+      background: white;
+      color: var(--text);
+      border-color: var(--border);
     }
 
-    h3 {
-      font-size: 28px;
-      margin-bottom: 20px;
+    .btn-secondary:hover {
+      border-color: #cbd5e1;
+      color: var(--text);
+    }
+
+    .hero-card {
+      background: linear-gradient(145deg, #eff6ff, #ffffff);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 12px;
+    }
+
+    .hero-card ul {
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .hero-card li {
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      max-width: 750px;
+      margin-bottom: 30px;
     }
 
     .card {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 26px;
+      box-shadow: var(--shadow);
     }
 
-    .card h4 {
+    .about-grid,
+    .project-grid,
+    .contact-grid {
+      display: grid;
+      gap: 22px;
+    }
+
+    .about-grid {
+      grid-template-columns: 1.2fr 1fr;
+    }
+
+    .project-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .contact-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .skills-list,
+    .bullet-list {
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .skills-list li,
+    .bullet-list li {
+      margin-bottom: 10px;
+    }
+
+    .experience-list {
+      display: grid;
+      gap: 22px;
+    }
+
+    .experience-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .experience-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
       margin-bottom: 8px;
-      color: #0f172a;
+      flex-wrap: wrap;
     }
 
-    .card p {
-      color: #334155;
+    .experience-top h3 {
+      font-size: 1.2rem;
+    }
+
+    .company {
+      color: var(--text);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 14px;
+    }
+
+    .date {
+      color: var(--muted);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      background: #eff6ff;
+      color: #1e40af;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 0.86rem;
+      font-weight: 700;
     }
 
     footer {
+      padding: 28px 0 40px;
+      color: var(--muted);
       text-align: center;
-      padding: 25px;
-      background: #0f172a;
-      color: white;
-      margin-top: 40px;
     }
 
-    ul {
-      padding-left: 20px;
+    @media (max-width: 900px) {
+      .hero-grid,
+      .about-grid,
+      .project-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 72px;
+      }
     }
 
-    li {
-      margin-bottom: 10px;
+    @media (max-width: 620px) {
+      nav ul {
+        gap: 14px;
+      }
+
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+
+      .section-title {
+        font-size: 1.7rem;
+      }
+
+      .card,
+      .experience-item,
+      .hero-card {
+        padding: 20px;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Saksham Singh</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="container nav">
+      <div class="brand">Saksham Singh</div>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <section class="hero">
-    <h2>Hi, I’m Saksham Singh</h2>
-    <p>
-      I’m a Computer Science student at Purdue University interested in product, data, AI, and building tools that solve real problems.
-    </p>
-    <div class="buttons">
-      <a class="btn-primary" href="#projects">View Projects</a>
-      <a class="btn-secondary" href="mailto:sakshh0107@gmail.com">Contact Me</a>
-    </div>
-  </section>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Computer Science Student at Purdue University</div>
+          <h1>Building at the intersection of product, data, and AI.</h1>
+          <p>
+            I’m Saksham Singh, a Computer Science student with experience in product management, analytics, machine learning, and AI-powered applications.
+            I enjoy turning complex data into clear decisions and building tools that solve real business problems.
+          </p>
+          <div class="button-row">
+            <a class="btn btn-primary" href="#experience">View Experience</a>
+            <a class="btn btn-secondary" href="mailto:sakshh0107@gmail.com">Contact Me</a>
+          </div>
+        </div>
 
-  <section id="about">
-    <h3>About Me</h3>
-    <div class="card">
-      <p>
-        I have experience across product management, data analytics, AI research, and dashboard development.
-        My work has included building Tableau and Power BI dashboards, developing machine learning models,
-        leading Agile sprint planning, and creating AI-powered applications.
-      </p>
-    </div>
-  </section>
+        <div class="hero-card">
+          <h3>What I work on</h3>
+          <ul>
+            <li>Product and project execution with Agile, Jira, and stakeholder collaboration</li>
+            <li>Dashboards and reporting with Tableau, Power BI, Excel, SQL, and Python</li>
+            <li>AI and machine learning projects across research, analytics, and application development</li>
+            <li>Turning technical findings into usable business recommendations</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-  <section id="experience">
-    <h3>Experience</h3>
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">About</h2>
+        <p class="section-subtitle">
+          My background spans product, analytics, research, and AI development. I’ve worked with corporate partners, university teams, and research labs on projects involving dashboards, predictive modeling, workflow automation, and cross-functional execution.
+        </p>
 
-    <div class="card">
-      <h4>Project Manager | BASF, Data Mine Corporate Partners</h4>
-      <p>January 2026 – Present</p>
-      <p>Build Tableau dashboards, lead Agile sprint planning, and translate business and engineering goals into actionable user stories.</p>
-    </div>
+        <div class="about-grid">
+          <div class="card">
+            <h3 style="margin-bottom: 12px;">Education</h3>
+            <p><strong>Purdue University</strong></p>
+            <p>Bachelor of Science in Computer Science</p>
+            <p>August 2023 – May 2027</p>
+            <p>Certification: Entrepreneurship and Innovation, Application in Data Science</p>
+          </div>
 
-    <div class="card">
-      <h4>Data Analyst in Training | Purdue Dining & Culinary</h4>
-      <p>July 2025 – Present</p>
-      <p>Clean and structure large datasets in Excel and improve reporting accuracy across 9 locations.</p>
-    </div>
+          <div class="card">
+            <h3 style="margin-bottom: 12px;">Core Skills</h3>
+            <ul class="skills-list">
+              <li>Product Lifecycle Management, Agile Methodology, Jira, User Stories, Data-Driven Prioritization</li>
+              <li>Python, SQL, R, Tableau, Power BI, Excel, scikit-learn</li>
+              <li>Generative AI, Agentic AI, AI-assisted development with Cursor, Claude, Gemini, and GitHub Copilot</li>
+              <li>Cross-functional leadership, KPI benchmarking, dashboard development, and technical communication</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <div class="card">
-      <h4>Artificial Intelligence Researcher | Prediction Guard</h4>
-      <p>August 2025 – December 2025</p>
-      <p>Built AI-powered support workflows and created deployment documentation for non-technical stakeholders.</p>
-    </div>
+    <section id="experience">
+      <div class="container">
+        <h2 class="section-title">Experience</h2>
+        <p class="section-subtitle">
+          A mix of product leadership, analytics, applied AI, and research roles across industry, university operations, and technical teams.
+        </p>
 
-    <div class="card">
-      <h4>Data Science Researcher | Purdue Athletics</h4>
-      <p>August 2024 – April 2025</p>
-      <p>Used SQL, Python, and Power BI to track KPIs, benchmark athlete performance, and improve decision-making.</p>
-    </div>
-  </section>
+        <div class="experience-list">
+          <div class="experience-item">
+            <div class="experience-top">
+              <div>
+                <h3>Project Manager</h3>
+                <div class="company">BASF, Data Mine Corporate Partners</div>
+                <div class="meta">West Lafayette, IN</div>
+              </div>
+              <div class="date">January 2026 – Present</div>
+            </div>
+            <ul class="bullet-list">
+              <li>Develop Tableau dashboards to synthesize complex datasets into actionable insights for both technical and non-technical stakeholders, driving data-informed business decisions and long-term process improvements.</li>
+              <li>Lead an Agile, Scrum-based team through sprint planning, weekly check-ins, retrospectives, task prioritization, and business-focused deliverables.</li>
+              <li>Leverage Jira to translate engineering and business goals into actionable user stories and a roadmap that improves operational efficiency.</li>
+              <li>Oversee the analysis of demographic, behavioral, geospatial, and publicly available agricultural data to support grower segmentation and strategy development.</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag">Tableau</span>
+              <span class="tag">Jira</span>
+              <span class="tag">Agile</span>
+              <span class="tag">Product Strategy</span>
+            </div>
+          </div>
 
-  <section id="projects">
-    <h3>Projects</h3>
+          <div class="experience-item">
+            <div class="experience-top">
+              <div>
+                <h3>Data Analyst in Training</h3>
+                <div class="company">Purdue Dining & Culinary</div>
+                <div class="meta">West Lafayette, IN</div>
+              </div>
+              <div class="date">July 2025 – Present</div>
+            </div>
+            <ul class="bullet-list">
+              <li>Manage data integrity by cleaning and structuring multi-source, unstructured datasets in Excel and developing validation frameworks for 1,200+ profiles across 9 locations.</li>
+              <li>Develop hiring reports and dashboards by transforming raw recruitment data into actionable insights that improve reporting accuracy and operational decision-making.</li>
+              <li>Support recruitment strategy by combining operational understanding with data-driven analysis to improve workforce planning and hiring processes.</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag">Excel</span>
+              <span class="tag">Reporting</span>
+              <span class="tag">Data Validation</span>
+              <span class="tag">Operations</span>
+            </div>
+          </div>
 
-    <div class="card">
-      <h4>Snap Study – AI-Powered Learning Assistant</h4>
-      <p>
-        Built a full-stack AI product for neurodiverse students using Flutter, FastAPI, AWS, and multiple AI services.
-      </p>
-    </div>
+          <div class="experience-item">
+            <div class="experience-top">
+              <div>
+                <h3>Artificial Intelligence Researcher</h3>
+                <div class="company">Prediction Guard, Data Mine Corporate Partners</div>
+                <div class="meta">West Lafayette, IN</div>
+              </div>
+              <div class="date">August 2025 – December 2025</div>
+            </div>
+            <ul class="bullet-list">
+              <li>Directed the end-to-end build of a retail customer support AI agent using Cursor and Claude for AI-assisted development, transforming manual processes into scalable automated workflows.</li>
+              <li>Built secure integrations and supporting documentation to help business users adopt private AI tools in regulated environments without exposing confidential data.</li>
+              <li>Created deployment scripts, mitigation guides, setup instructions, and starter resources that enabled non-technical stakeholders to implement AI capabilities into business workflows efficiently.</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag">Generative AI</span>
+              <span class="tag">Claude</span>
+              <span class="tag">Cursor</span>
+              <span class="tag">Technical Documentation</span>
+            </div>
+          </div>
 
-    <div class="card">
-      <h4>Maize Yield Prediction</h4>
-      <p>
-        Developed machine learning models including XGBoost and Random Forest to predict maize outcomes with 77% accuracy.
-      </p>
-    </div>
-  </section>
+          <div class="experience-item">
+            <div class="experience-top">
+              <div>
+                <h3>Undergraduate Researcher</h3>
+                <div class="company">Kihara Bioinformatics Laboratory</div>
+                <div class="meta">West Lafayette, IN</div>
+              </div>
+              <div class="date">May 2025 – August 2025</div>
+            </div>
+            <ul class="bullet-list">
+              <li>Contributed to full-stack development of cryo-EM structure modeling tools using Python, Django, and Flask.</li>
+              <li>Architected Tableau dashboards to visualize 10,000+ protein sequences, helping cross-functional teams interpret genomic data and streamline experimental workflows.</li>
+              <li>Explored deep learning and protein modeling workflows to support research on structure-function relationships and functional annotation.</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag">Python</span>
+              <span class="tag">Django</span>
+              <span class="tag">Flask</span>
+              <span class="tag">Bioinformatics</span>
+            </div>
+          </div>
 
-  <section id="contact">
-    <h3>Contact</h3>
-    <div class="card">
-      <p>Email: sakshh0107@gmail.com</p>
-      <p>GitHub: <a href="https://github.com/saakshhh" target="_blank">github.com/saakshhh</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/ssingh0107/" target="_blank">linkedin.com/in/ssingh0107</a></p>
-    </div>
-  </section>
+          <div class="experience-item">
+            <div class="experience-top">
+              <div>
+                <h3>Data Science Researcher</h3>
+                <div class="company">Purdue Athletics Strength and Conditioning, Data Mine Corporate Partners</div>
+                <div class="meta">West Lafayette, IN</div>
+              </div>
+              <div class="date">August 2024 – April 2025</div>
+            </div>
+            <ul class="bullet-list">
+              <li>Synthesized datasets from Catapult and HitTrax using SQL and Python to develop a standardized athleticism index and identify high-risk injury signals for player development.</li>
+              <li>Developed 6+ Power BI dashboards to track KPI trends and risk signals, accelerating data-driven decision-making by 10% and improving weekly operational performance.</li>
+              <li>Built interactive analytics tools and communicated technical findings to coaches, faculty, and corporate partners through presentations and dashboard-driven insights.</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag">SQL</span>
+              <span class="tag">Python</span>
+              <span class="tag">Power BI</span>
+              <span class="tag">Sports Analytics</span>
+            </div>
+          </div>
+
+          <div class="experience-item">
+            <div class="experience-top">
+              <div>
+                <h3>Undergraduate Data Scientist</h3>
+                <div class="company">Bayer, Data Mine Corporate Partners</div>
+                <div class="meta">West Lafayette, IN</div>
+              </div>
+              <div class="date">August 2023 – April 2024</div>
+            </div>
+            <ul class="bullet-list">
+              <li>Spearheaded the development of predictive yield models using XGBoost and Random Forest, achieving 77% accuracy in maize outcomes and prioritizing high-impact research areas.</li>
+              <li>Engineered a scalable Python solution to integrate thousands of genetic and environmental markers, improving data quality and processing efficiency by 34%.</li>
+              <li>Translated technical findings into strategic insights for agricultural research and presented project methodology, results, and business implications to diverse stakeholders.</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag">Machine Learning</span>
+              <span class="tag">Python</span>
+              <span class="tag">XGBoost</span>
+              <span class="tag">Agricultural Analytics</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <p class="section-subtitle">
+          Selected work that reflects my interest in AI products, applied machine learning, and building solutions that are both technically strong and user-focused.
+        </p>
+
+        <div class="project-grid">
+          <div class="card">
+            <h3 style="margin-bottom: 10px;">Snap Study</h3>
+            <p style="color: var(--muted); margin-bottom: 12px;">
+              AI-powered learning assistant for neurodiverse students built as a full-stack product.
+            </p>
+            <ul class="bullet-list">
+              <li>Led rapid development of a 15-screen Flutter application from Figma designs within an 8-week timeline.</li>
+              <li>Built FastAPI services and AWS-backed AI integrations for a text-to-audio workflow with near real-time performance.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3 style="margin-bottom: 10px;">Maize Yield Prediction</h3>
+            <p style="color: var(--muted); margin-bottom: 12px;">
+              Applied machine learning for agricultural prediction and decision support.
+            </p>
+            <ul class="bullet-list">
+              <li>Built and benchmarked predictive models using XGBoost and Random Forest to forecast maize yield.</li>
+              <li>Identified key environmental drivers and created a more scalable, standardized data foundation for analysis.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-subtitle">
+          Feel free to reach out for project collaborations, or just to connect.
+        </p>
+
+        <div class="contact-grid">
+          <div class="card">
+            <h3 style="margin-bottom: 8px;">Email</h3>
+            <p><a href="mailto:sakshh0107@gmail.com">sakshh0107@gmail.com</a></p>
+          </div>
+
+          <div class="card">
+            <h3 style="margin-bottom: 8px;">GitHub</h3>
+            <p><a href="https://github.com/saakshhh" target="_blank">github.com/saakshhh</a></p>
+          </div>
+
+          <div class="card">
+            <h3 style="margin-bottom: 8px;">LinkedIn</h3>
+            <p><a href="https://www.linkedin.com/in/ssingh0107/" target="_blank">linkedin.com/in/ssingh0107</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    <p>© 2026 Saksham Singh</p>
+    <div class="container">
+      <p>© 2026 Saksham Singh</p>
+    </div>
   </footer>
 </body>
 </html>
