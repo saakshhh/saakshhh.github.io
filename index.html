@@ -3,11 +3,215 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Saksham Singh</title>
+  <title>Saksham Singh | Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background: #f8fafc;
+      color: #1e293b;
+    }
+
+    header {
+      background: #0f172a;
+      color: white;
+      padding: 20px 10%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+    }
+
+    header h1 {
+      font-size: 24px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 15px;
+    }
+
+    section {
+      padding: 70px 10%;
+    }
+
+    .hero {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero h2 {
+      font-size: 44px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      max-width: 700px;
+      margin-bottom: 25px;
+      color: #334155;
+    }
+
+    .buttons a {
+      display: inline-block;
+      margin-right: 15px;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .btn-primary {
+      background: #2563eb;
+      color: white;
+    }
+
+    .btn-secondary {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    h3 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .card h4 {
+      margin-bottom: 8px;
+      color: #0f172a;
+    }
+
+    .card p {
+      color: #334155;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #0f172a;
+      color: white;
+      margin-top: 40px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Saksham Singh</h1>
-  <p>Computer Science student at Purdue University.</p>
-  <p>This is my personal website.</p>
+  <header>
+    <h1>Saksham Singh</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Hi, I’m Saksham Singh</h2>
+    <p>
+      I’m a Computer Science student at Purdue University interested in product, data, AI, and building tools that solve real problems.
+    </p>
+    <div class="buttons">
+      <a class="btn-primary" href="#projects">View Projects</a>
+      <a class="btn-secondary" href="mailto:sakshh0107@gmail.com">Contact Me</a>
+    </div>
+  </section>
+
+  <section id="about">
+    <h3>About Me</h3>
+    <div class="card">
+      <p>
+        I have experience across product management, data analytics, AI research, and dashboard development.
+        My work has included building Tableau and Power BI dashboards, developing machine learning models,
+        leading Agile sprint planning, and creating AI-powered applications.
+      </p>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h3>Experience</h3>
+
+    <div class="card">
+      <h4>Project Manager | BASF, Data Mine Corporate Partners</h4>
+      <p>January 2026 – Present</p>
+      <p>Build Tableau dashboards, lead Agile sprint planning, and translate business and engineering goals into actionable user stories.</p>
+    </div>
+
+    <div class="card">
+      <h4>Data Analyst in Training | Purdue Dining & Culinary</h4>
+      <p>July 2025 – Present</p>
+      <p>Clean and structure large datasets in Excel and improve reporting accuracy across 9 locations.</p>
+    </div>
+
+    <div class="card">
+      <h4>Artificial Intelligence Researcher | Prediction Guard</h4>
+      <p>August 2025 – December 2025</p>
+      <p>Built AI-powered support workflows and created deployment documentation for non-technical stakeholders.</p>
+    </div>
+
+    <div class="card">
+      <h4>Data Science Researcher | Purdue Athletics</h4>
+      <p>August 2024 – April 2025</p>
+      <p>Used SQL, Python, and Power BI to track KPIs, benchmark athlete performance, and improve decision-making.</p>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h3>Projects</h3>
+
+    <div class="card">
+      <h4>Snap Study – AI-Powered Learning Assistant</h4>
+      <p>
+        Built a full-stack AI product for neurodiverse students using Flutter, FastAPI, AWS, and multiple AI services.
+      </p>
+    </div>
+
+    <div class="card">
+      <h4>Maize Yield Prediction</h4>
+      <p>
+        Developed machine learning models including XGBoost and Random Forest to predict maize outcomes with 77% accuracy.
+      </p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h3>Contact</h3>
+    <div class="card">
+      <p>Email: sakshh0107@gmail.com</p>
+      <p>GitHub: <a href="https://github.com/saakshhh" target="_blank">github.com/saakshhh</a></p>
+      <p>LinkedIn: add your LinkedIn link here</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Saksham Singh</p>
+  </footer>
 </body>
 </html>
