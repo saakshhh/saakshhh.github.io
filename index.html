@@ -5,17 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Saksham Singh | Portfolio</title>
   <meta name="description" content="Portfolio of Saksham Singh, Computer Science student at Purdue University with experience in product, data, AI, and analytics." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f8fafc;
-      --surface: #ffffff;
-      --text: #0f172a;
-      --muted: #475569;
-      --accent: #2563eb;
-      --accent-dark: #1d4ed8;
-      --border: #e2e8f0;
-      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-      --max-width: 1100px;
+      --bg: #050505;
+      --bg-soft: #0d0d0d;
+      --surface: rgba(18, 18, 18, 0.86);
+      --surface-2: rgba(28, 28, 28, 0.92);
+      --text: #f8fafc;
+      --muted: #a1a1aa;
+      --accent: #ff2d2d;
+      --accent-2: #ff6b6b;
+      --line: rgba(255, 255, 255, 0.08);
+      --glow: 0 20px 50px rgba(255, 45, 45, 0.12);
+      --shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+      --max-width: 1180px;
+      --radius: 24px;
     }
 
     * {
@@ -25,34 +32,53 @@
       scroll-behavior: smooth;
     }
 
-    body {
-      font-family: Arial, sans-serif;
+    html {
       background: var(--bg);
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(255, 45, 45, 0.14), transparent 28%),
+        radial-gradient(circle at top right, rgba(255, 255, 255, 0.05), transparent 20%),
+        linear-gradient(180deg, #050505 0%, #0b0b0b 45%, #050505 100%);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.42), rgba(0,0,0,0.9));
+      z-index: 0;
     }
 
     a {
-      color: var(--accent);
+      color: var(--text);
       text-decoration: none;
-    }
-
-    a:hover {
-      color: var(--accent-dark);
     }
 
     .container {
       width: min(92%, var(--max-width));
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
 
     header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(248, 250, 252, 0.92);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+      background: rgba(5, 5, 5, 0.72);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .nav {
@@ -60,12 +86,26 @@
       align-items: center;
       justify-content: space-between;
       padding: 18px 0;
+      gap: 20px;
     }
 
     .brand {
+      font-family: "Space Grotesk", sans-serif;
       font-size: 1.2rem;
       font-weight: 700;
-      color: var(--text);
+      letter-spacing: 0.02em;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand::before {
+      content: "";
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 18px rgba(255, 45, 45, 0.65);
     }
 
     nav ul {
@@ -79,134 +119,249 @@
       color: var(--muted);
       font-weight: 600;
       font-size: 0.95rem;
+      transition: color 0.2s ease, transform 0.2s ease;
     }
 
     nav a:hover {
       color: var(--text);
+      transform: translateY(-1px);
     }
 
     section {
-      padding: 72px 0;
+      padding: 84px 0;
+      position: relative;
+      z-index: 1;
     }
 
     .hero {
-      padding: 96px 0 72px;
+      padding: 110px 0 70px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap: 36px;
-      align-items: center;
+      grid-template-columns: 1.25fr 0.95fr;
+      gap: 34px;
+      align-items: stretch;
     }
 
     .eyebrow {
-      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #ffd6d6;
       font-weight: 700;
-      margin-bottom: 14px;
-      letter-spacing: 0.02em;
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+      letter-spacing: 0.03em;
+      padding: 10px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 18px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+    }
+
+    .hero-copy {
+      padding: 10px 0;
     }
 
     .hero h1 {
-      font-size: clamp(2.4rem, 5vw, 4rem);
-      line-height: 1.1;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(2.9rem, 6vw, 5.2rem);
+      line-height: 0.98;
       margin-bottom: 18px;
+      letter-spacing: -0.04em;
+      max-width: 10.5ch;
     }
 
-    .hero p {
-      font-size: 1.08rem;
-      color: var(--muted);
-      max-width: 700px;
-      margin-bottom: 24px;
+    .hero .lead {
+      font-size: 1.1rem;
+      color: #d4d4d8;
+      max-width: 720px;
+      margin-bottom: 28px;
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin: 24px 0 30px;
+    }
+
+    .stat-chip {
+      padding: 12px 16px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #e4e4e7;
+      font-size: 0.94rem;
+      font-weight: 600;
     }
 
     .button-row {
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
-      margin-top: 10px;
+      margin-top: 8px;
     }
 
     .btn {
-      display: inline-block;
-      padding: 12px 18px;
-      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 20px;
+      border-radius: 16px;
       font-weight: 700;
-      transition: 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
       border: 1px solid transparent;
     }
 
-    .btn-primary {
-      background: var(--accent);
-      color: white;
+    .btn:hover {
+      transform: translateY(-2px);
     }
 
-    .btn-primary:hover {
-      background: var(--accent-dark);
+    .btn-primary {
       color: white;
+      background: linear-gradient(135deg, var(--accent), #c71616);
+      box-shadow: var(--glow);
     }
 
     .btn-secondary {
-      background: white;
+      background: rgba(255, 255, 255, 0.04);
       color: var(--text);
-      border-color: var(--border);
+      border-color: rgba(255,255,255,0.08);
     }
 
-    .btn-secondary:hover {
-      border-color: #cbd5e1;
-      color: var(--text);
-    }
-
-    .hero-card {
-      background: linear-gradient(145deg, #eff6ff, #ffffff);
-      border: 1px solid var(--border);
-      border-radius: 24px;
+    .hero-panel {
+      position: relative;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.035), rgba(255,255,255,0.015)),
+        linear-gradient(180deg, rgba(255, 45, 45, 0.12), transparent 45%);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 30px;
       padding: 28px;
       box-shadow: var(--shadow);
+      overflow: hidden;
+      min-height: 100%;
     }
 
-    .hero-card h3 {
-      font-size: 1.05rem;
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          -60deg,
+          rgba(255,255,255,0.04) 0,
+          rgba(255,255,255,0.04) 1px,
+          transparent 1px,
+          transparent 18px
+        );
+      opacity: 0.28;
+      pointer-events: none;
+    }
+
+    .panel-label {
+      position: relative;
+      z-index: 1;
+      color: #ffd4d4;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.75rem;
+      font-weight: 800;
       margin-bottom: 12px;
     }
 
-    .hero-card ul {
-      padding-left: 18px;
-      color: var(--muted);
+    .panel-title {
+      position: relative;
+      z-index: 1;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.45rem;
+      margin-bottom: 18px;
     }
 
-    .hero-card li {
-      margin-bottom: 10px;
+    .hero-panel ul {
+      position: relative;
+      z-index: 1;
+      list-style: none;
+      display: grid;
+      gap: 14px;
+    }
+
+    .hero-panel li {
+      display: flex;
+      gap: 12px;
+      color: #e4e4e7;
+      align-items: flex-start;
+    }
+
+    .hero-panel li::before {
+      content: "▸";
+      color: var(--accent);
+      font-weight: 900;
+      margin-top: 1px;
+    }
+
+    .section-intro {
+      margin-bottom: 34px;
+    }
+
+    .section-kicker {
+      color: #ffb8b8;
+      font-size: 0.84rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 800;
+      margin-bottom: 12px;
     }
 
     .section-title {
-      font-size: 2rem;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(2rem, 3vw, 3rem);
+      letter-spacing: -0.03em;
       margin-bottom: 12px;
     }
 
     .section-subtitle {
       color: var(--muted);
-      max-width: 750px;
-      margin-bottom: 30px;
+      max-width: 760px;
+      font-size: 1.02rem;
     }
 
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 26px;
+    .card,
+    .experience-item {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.018));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius);
+      padding: 28px;
       box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover,
+    .experience-item:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 45, 45, 0.25);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.42);
     }
 
     .about-grid,
     .project-grid,
     .contact-grid {
       display: grid;
-      gap: 22px;
+      gap: 24px;
     }
 
     .about-grid {
-      grid-template-columns: 1.2fr 1fr;
+      grid-template-columns: 1.1fr 1fr;
     }
 
     .project-grid {
@@ -217,84 +372,127 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
+    .card h3,
+    .experience-top h3 {
+      font-family: "Space Grotesk", sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    .card p,
+    .meta,
+    .bullet-list,
+    .skills-list {
+      color: #d4d4d8;
+    }
+
     .skills-list,
     .bullet-list {
       padding-left: 18px;
-      color: var(--muted);
     }
 
     .skills-list li,
     .bullet-list li {
-      margin-bottom: 10px;
+      margin-bottom: 11px;
     }
 
     .experience-list {
       display: grid;
-      gap: 22px;
-    }
-
-    .experience-item {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 26px;
-      box-shadow: var(--shadow);
+      gap: 24px;
     }
 
     .experience-top {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 16px;
-      margin-bottom: 8px;
+      gap: 18px;
       flex-wrap: wrap;
-    }
-
-    .experience-top h3 {
-      font-size: 1.2rem;
+      margin-bottom: 12px;
     }
 
     .company {
-      color: var(--text);
+      color: white;
       font-weight: 700;
       margin-bottom: 4px;
     }
 
     .meta {
-      color: var(--muted);
       font-size: 0.95rem;
-      margin-bottom: 14px;
+      color: var(--muted);
     }
 
     .date {
-      color: var(--muted);
+      color: #ffd4d4;
       font-weight: 700;
       white-space: nowrap;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 45, 45, 0.08);
+      border: 1px solid rgba(255, 45, 45, 0.18);
+      font-size: 0.92rem;
     }
 
     .tag-row {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 14px;
+      margin-top: 18px;
     }
 
     .tag {
-      background: #eff6ff;
-      color: #1e40af;
+      background: rgba(255, 255, 255, 0.045);
+      color: #ffe4e4;
+      border: 1px solid rgba(255,255,255,0.07);
       border-radius: 999px;
       padding: 8px 12px;
-      font-size: 0.86rem;
+      font-size: 0.84rem;
       font-weight: 700;
     }
 
-    footer {
-      padding: 28px 0 40px;
-      color: var(--muted);
-      text-align: center;
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 14px;
+      color: #ffd4d4;
+      font-weight: 700;
     }
 
-    @media (max-width: 900px) {
+    .project-link:hover {
+      color: white;
+    }
+
+    .contact-card {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    footer {
+      padding: 26px 0 42px;
+      text-align: center;
+      color: var(--muted);
+      position: relative;
+      z-index: 1;
+    }
+
+    .track-line {
+      height: 4px;
+      width: 100%;
+      border-radius: 999px;
+      margin: 0 auto 18px;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255,255,255,0.08) 20%,
+        var(--accent) 50%,
+        rgba(255,255,255,0.08) 80%,
+        transparent 100%
+      );
+      opacity: 0.8;
+    }
+
+    @media (max-width: 950px) {
       .hero-grid,
       .about-grid,
       .project-grid,
@@ -303,27 +501,44 @@
       }
 
       .hero {
-        padding-top: 72px;
+        padding-top: 88px;
+      }
+
+      .hero h1 {
+        max-width: 100%;
       }
     }
 
-    @media (max-width: 620px) {
+    @media (max-width: 640px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
       nav ul {
         gap: 14px;
       }
 
-      .hero h1 {
-        font-size: 2.3rem;
+      section {
+        padding: 70px 0;
       }
 
-      .section-title {
-        font-size: 1.7rem;
+      .hero {
+        padding-top: 72px;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
       }
 
       .card,
       .experience-item,
-      .hero-card {
-        padding: 20px;
+      .hero-panel {
+        padding: 22px;
+      }
+
+      .date {
+        white-space: normal;
       }
     }
   </style>
@@ -346,26 +561,33 @@
   <main>
     <section class="hero">
       <div class="container hero-grid">
-        <div>
+        <div class="hero-copy">
           <div class="eyebrow">Computer Science Student at Purdue University</div>
-          <h1>Building at the intersection of product, data, and AI.</h1>
-          <p>
-            I’m Saksham Singh, a Computer Science student with experience in product management, analytics, machine learning, and AI-powered applications.
-            I enjoy turning complex data into clear decisions and building tools that solve real business problems.
+          <h1>Precision, speed, and clean execution.</h1>
+          <p class="lead">
+            I’m Saksham Singh, a Computer Science student with experience across product management, analytics, machine learning, and AI-powered applications. I enjoy turning complex data into clear decisions and building tools that solve real problems.
           </p>
+
+          <div class="hero-stats">
+            <div class="stat-chip">Product + Data</div>
+            <div class="stat-chip">AI + Full Stack</div>
+            <div class="stat-chip">Built for impact</div>
+          </div>
+
           <div class="button-row">
             <a class="btn btn-primary" href="#experience">View Experience</a>
-            <a class="btn btn-secondary" href="mailto:sakshh0107@gmail.com">Contact Me</a>
+            <a class="btn btn-secondary" href="#projects">See Projects</a>
           </div>
         </div>
 
-        <div class="hero-card">
-          <h3>What I work on</h3>
+        <div class="hero-panel">
+          <div class="panel-label">Inspired by racing discipline</div>
+          <div class="panel-title">How I like to work</div>
           <ul>
-            <li>Product and project execution with Agile, Jira, and stakeholder collaboration</li>
-            <li>Dashboards and reporting with Tableau, Power BI, Excel, SQL, and Python</li>
-            <li>AI and machine learning projects across research, analytics, and application development</li>
-            <li>Turning technical findings into usable business recommendations</li>
+            <li>Move fast, but keep the system stable.</li>
+            <li>Build with clarity, not noise.</li>
+            <li>Use data to guide decisions and iteration.</li>
+            <li>Translate technical work into real outcomes.</li>
           </ul>
         </div>
       </div>
@@ -373,10 +595,13 @@
 
     <section id="about">
       <div class="container">
-        <h2 class="section-title">About</h2>
-        <p class="section-subtitle">
-          My background spans product, analytics, research, and AI development. I’ve worked with corporate partners, university teams, and research labs on projects involving dashboards, predictive modeling, workflow automation, and cross-functional execution.
-        </p>
+        <div class="section-intro">
+          <div class="section-kicker">Overview</div>
+          <h2 class="section-title">About</h2>
+          <p class="section-subtitle">
+            My background spans product, analytics, research, and AI development. I’ve worked with corporate partners, university teams, and research labs on projects involving dashboards, predictive modeling, workflow automation, and cross-functional execution.
+          </p>
+        </div>
 
         <div class="about-grid">
           <div class="card">
@@ -402,10 +627,13 @@
 
     <section id="experience">
       <div class="container">
-        <h2 class="section-title">Experience</h2>
-        <p class="section-subtitle">
-          A mix of product leadership, analytics, applied AI, and research roles across industry, university operations, and technical teams.
-        </p>
+        <div class="section-intro">
+          <div class="section-kicker">Track Record</div>
+          <h2 class="section-title">Experience</h2>
+          <p class="section-subtitle">
+            A mix of product leadership, analytics, applied AI, and research roles across industry, university operations, and technical teams.
+          </p>
+        </div>
 
         <div class="experience-list">
           <div class="experience-item">
@@ -486,7 +714,7 @@
             </div>
             <ul class="bullet-list">
               <li>Researched AlphaFold2 and AlphaFold3 to understand protein structure prediction workflows and inform the team’s modeling strategy.</li>
-              <li>Visualize protein sequences, helping cross-functional teams interpret genomic data and streamline experimental workflows.</li>
+              <li>Visualized protein sequences, helping cross-functional teams interpret genomic data and streamline experimental workflows.</li>
               <li>Explored deep learning and protein modeling workflows to support research on structure-function relationships and functional annotation.</li>
             </ul>
             <div class="tag-row">
@@ -508,7 +736,7 @@
             </div>
             <ul class="bullet-list">
               <li>Synthesized datasets from Catapult and HitTrax using SQL and Python to develop a standardized athleticism index and identify high-risk injury signals for player development.</li>
-              <li>Developed 6+ Power BI and Tableaudashboards to track KPI trends and risk signals, accelerating data-driven decision-making by 10% and improving weekly operational performance.</li>
+              <li>Developed 6+ Power BI and Tableau dashboards to track KPI trends and risk signals, accelerating data-driven decision-making by 10% and improving weekly operational performance.</li>
               <li>Built interactive analytics tools and communicated technical findings to coaches, faculty, and corporate partners through presentations and dashboard-driven insights.</li>
             </ul>
             <div class="tag-row">
@@ -549,73 +777,81 @@
     </section>
 
     <section id="projects">
-  <div class="container">
-    <h2 class="section-title">Projects</h2>
-    <p class="section-subtitle">
-      Selected projects focused on AI, full-stack development, accessibility, and data-driven applications.
-    </p>
+      <div class="container">
+        <div class="section-intro">
+          <div class="section-kicker">Builds</div>
+          <h2 class="section-title">Projects</h2>
+          <p class="section-subtitle">
+            Selected projects focused on AI, full-stack development, accessibility, and data-driven applications.
+          </p>
+        </div>
 
-    <div class="project-grid">
-      <div class="card">
-        <h3 style="margin-bottom: 10px;">Sentiment Analysis Platform</h3>
-        <p style="color: var(--muted); margin-bottom: 12px;">
-          Built a full-stack market sentiment analysis platform that fetches financial news, applies FinBERT-based sentiment analysis, and visualizes daily sentiment trends through an interactive dashboard.
-        </p>
-        <ul class="bullet-list">
-          <li>Designed a workflow that helps users quickly understand whether media coverage around a public company has been trending positive, negative, or neutral.</li>
-          <li>Integrated a FastAPI backend with PostgreSQL and Docker to store and retrieve historical sentiment results efficiently.</li>
-          <li>Built a lightweight frontend using HTML, JavaScript, and Chart.js to display daily average sentiment in a clear, interactive format.</li>
-        </ul>
-        <p style="margin-top: 14px; color: var(--muted);">
-          <strong>Tools:</strong> Python, FastAPI, PostgreSQL, Docker, Docker Compose, HTML, JavaScript, Chart.js, FinBERT, NewsAPI
-        </p>
-        <p style="margin-top: 12px;">
-          <a href="https://github.com/saakshhh/sentiment-analysis-platform" target="_blank">View Project on GitHub</a>
-        </p>
-      </div>
+        <div class="project-grid">
+          <div class="card">
+            <h3 style="margin-bottom: 10px;">Sentiment Analysis Platform</h3>
+            <p style="color: var(--muted); margin-bottom: 12px;">
+              Built a full-stack market sentiment analysis platform that fetches financial news, applies FinBERT-based sentiment analysis, and visualizes daily sentiment trends through an interactive dashboard.
+            </p>
+            <ul class="bullet-list">
+              <li>Designed a workflow that helps users quickly understand whether media coverage around a public company has been trending positive, negative, or neutral.</li>
+              <li>Integrated a FastAPI backend with PostgreSQL and Docker to store and retrieve historical sentiment results efficiently.</li>
+              <li>Built a lightweight frontend using HTML, JavaScript, and Chart.js to display daily average sentiment in a clear, interactive format.</li>
+            </ul>
+            <p style="margin-top: 14px; color: var(--muted);">
+              <strong>Tools:</strong> Python, FastAPI, PostgreSQL, Docker, Docker Compose, HTML, JavaScript, Chart.js, FinBERT, NewsAPI
+            </p>
+            <a class="project-link" href="https://github.com/saakshhh/sentiment-analysis-platform" target="_blank">View Project on GitHub →</a>
+          </div>
 
-      <div class="card">
-        <h3 style="margin-bottom: 10px;">AI-Nable / Snap Study</h3>
-        <p style="color: var(--muted); margin-bottom: 12px;">
-          Helped build an AI-powered educational platform that transforms complex learning materials into more accessible, personalized experiences for neurodiverse students using multimodal AWS AI services.
-        </p>
-        <ul class="bullet-list">
-          <li>Worked on a system that converts uploaded educational documents into simplified text, audio narration, and interactive support for students with ADHD, dyslexia, and low literacy.</li>
-          <li>Connected a Flutter frontend with a FastAPI backend and AWS services to support document extraction, text simplification, and voice-based learning.</li>
-          <li>Contributed to a product designed around accessibility, personalization, and inclusive learning through text, audio, and visual support.</li>
-        </ul>
-        <p style="margin-top: 14px; color: var(--muted);">
-          <strong>Tools:</strong> Flutter, FastAPI, AWS Textract, Amazon Bedrock, Amazon Polly, Amazon S3, Python, Generative AI
-        </p>
-        <p style="margin-top: 12px;">
-          <a href="https://github.com/saakshhh/AI-Nable" target="_blank">View Project on GitHub</a>
-        </p>
+          <div class="card">
+            <h3 style="margin-bottom: 10px;">AI-Nable / Snap Study</h3>
+            <p style="color: var(--muted); margin-bottom: 12px;">
+              Helped build an AI-powered educational platform that transforms complex learning materials into more accessible, personalized experiences for neurodiverse students using multimodal AWS AI services.
+            </p>
+            <ul class="bullet-list">
+              <li>Worked on a system that converts uploaded educational documents into simplified text, audio narration, and interactive support for students with ADHD, dyslexia, and low literacy.</li>
+              <li>Connected a Flutter frontend with a FastAPI backend and AWS services to support document extraction, text simplification, and voice-based learning.</li>
+              <li>Contributed to a product designed around accessibility, personalization, and inclusive learning through text, audio, and visual support.</li>
+            </ul>
+            <p style="margin-top: 14px; color: var(--muted);">
+              <strong>Tools:</strong> Flutter, FastAPI, AWS Textract, Amazon Bedrock, Amazon Polly, Amazon S3, Python, Generative AI
+            </p>
+            <a class="project-link" href="https://github.com/saakshhh/AI-Nable" target="_blank">View Project on GitHub →</a>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
     <section id="contact">
       <div class="container">
-        <h2 class="section-title">Contact</h2>
-        <p class="section-subtitle">
-          Feel free to reach out for project collaborations, or just to connect.
-        </p>
+        <div class="section-intro">
+          <div class="section-kicker">Connect</div>
+          <h2 class="section-title">Contact</h2>
+          <p class="section-subtitle">
+            Feel free to reach out for project collaborations, internships, or just to connect.
+          </p>
+        </div>
 
         <div class="contact-grid">
-          <div class="card">
-            <h3 style="margin-bottom: 8px;">Email</h3>
-            <p><a href="mailto:sakshh0107@gmail.com">sakshh0107@gmail.com</a></p>
+          <div class="card contact-card">
+            <div>
+              <h3 style="margin-bottom: 8px;">Email</h3>
+              <p><a href="mailto:sakshh0107@gmail.com">sakshh0107@gmail.com</a></p>
+            </div>
           </div>
 
-          <div class="card">
-            <h3 style="margin-bottom: 8px;">GitHub</h3>
-            <p><a href="https://github.com/saakshhh" target="_blank">github.com/saakshhh</a></p>
+          <div class="card contact-card">
+            <div>
+              <h3 style="margin-bottom: 8px;">GitHub</h3>
+              <p><a href="https://github.com/saakshhh" target="_blank">github.com/saakshhh</a></p>
+            </div>
           </div>
 
-          <div class="card">
-            <h3 style="margin-bottom: 8px;">LinkedIn</h3>
-            <p><a href="https://www.linkedin.com/in/ssingh0107/" target="_blank">linkedin.com/in/ssingh0107</a></p>
+          <div class="card contact-card">
+            <div>
+              <h3 style="margin-bottom: 8px;">LinkedIn</h3>
+              <p><a href="https://www.linkedin.com/in/ssingh0107/" target="_blank">linkedin.com/in/ssingh0107</a></p>
+            </div>
           </div>
         </div>
       </div>
@@ -624,6 +860,7 @@
 
   <footer>
     <div class="container">
+      <div class="track-line"></div>
       <p>© 2026 Saksham Singh</p>
     </div>
   </footer>
