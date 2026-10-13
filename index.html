@@ -1,890 +1,1064 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Saksham Singh</title>
-<meta name="description" content="Saksham Singh: Purdue Computer Science, graduating May 2027. Applied AI, data science, analytics and product delivery across Bayer, Purdue Athletics, Prediction Guard, BASF and Purdue Dining.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,800;1,700;1,800&family=Titillium+Web:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
-<style>
-/* Layout: an F1 timing screen. Timing tower nav on the left, race-report cards on the right, Purdue black-and-gold livery. */
-:root{
-  --asphalt:#0b0d11;
-  --carbon:#13161c;
-  --carbon-2:#1a1e26;
-  --line:#272c36;
-  --ink:#eef0f3;
-  --muted:#939bab;
-  --gold:#cfb991;          /* Purdue old gold: team livery */
-  --gold-hot:#daaa00;      /* Purdue rush gold */
-  --purple:#b75cff;        /* fastest lap */
-  --green:#35d46f;         /* personal best */
-  --red:#ff2a1f;           /* start lights */
-  --soft:#ff3b30;          /* tyre: AI & ML */
-  --medium:#ffd21f;        /* tyre: Data & BI */
-  --hard:#f4f4f4;          /* tyre: Product & Program */
-  --inter:#3ccf5a;         /* tyre: Operations */
-  --f-display:"Barlow Condensed","Arial Narrow",Impact,sans-serif;
-  --f-body:"Titillium Web","Segoe UI",system-ui,sans-serif;
-  --f-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
-  --tower:220px;
-  color-scheme:dark;
-}
-*{box-sizing:border-box}
-[hidden]{display:none!important}
-html{scroll-behavior:smooth;scroll-padding-top:24px}
-body{background:var(--asphalt);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
-a{color:inherit}
-:focus-visible{outline:2px solid var(--gold-hot);outline-offset:3px;border-radius:2px}
-h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1}
-.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
-.eyebrow{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.carbon-bg{background-color:var(--carbon);background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.018) 0 2px,transparent 2px 6px),repeating-linear-gradient(-45deg,rgba(255,255,255,.018) 0 2px,transparent 2px 6px)}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saksham Singh | Portfolio</title>
+  <meta name="description" content="Portfolio of Saksham Singh, Computer Science student at Purdue University with experience in product, data, AI, and analytics." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --surface2: #181818;
+      --text: #f0f0f0;
+      --muted: #888888;
+      --muted2: #555;
+      --accent: #e10600;
+      --accent-dark: #b80500;
+      --accent-glow: rgba(225, 6, 0, 0.35);
+      --yellow: #ffd700;
+      --border: #252525;
+      --border-bright: #333;
+      --shadow: 0 8px 40px rgba(0,0,0,0.6);
+      --max-width: 1100px;
+    }
 
-/* lap progress */
-.lap{position:fixed;left:0;right:0;top:0;height:3px;z-index:60;background:var(--line);padding-top:env(safe-area-inset-top,0px)}
-.lap i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-hot))}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-/* shell */
-.shell{display:grid;grid-template-columns:var(--tower) minmax(0,1fr);min-height:100%}
-main{min-width:0;overflow-x:clip;padding-inline:clamp(16px,4vw,56px);padding-block:28px 64px;display:flex;flex-direction:column;gap:96px;max-width:1180px}
+    html { scroll-behavior: smooth; }
 
-/* timing tower */
-.tower{position:sticky;top:env(safe-area-inset-top,0px);height:100vh;padding:28px 0 20px 16px;display:flex;flex-direction:column;gap:18px}
-.tower-head{display:flex;align-items:center;gap:10px;padding-right:12px}
-.tower-head .num{font-family:var(--f-display);font-style:italic;font-weight:800;font-size:34px;color:var(--gold);line-height:.8}
-.tower-head .who{font-family:var(--f-mono);font-size:11px;line-height:1.3;color:var(--muted)}
-.tower-head .who b{display:block;color:var(--ink);font-size:13px;letter-spacing:.08em}
-.tower ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border:1px solid var(--line);border-right:0;background:var(--carbon)}
-.tower li a{display:grid;grid-template-columns:28px 44px 1fr;align-items:center;gap:6px;padding:7px 10px;text-decoration:none;font-family:var(--f-mono);font-size:12px;border-bottom:1px solid var(--line);color:var(--muted);transition:background .2s,color .2s}
-.tower li:last-child a{border-bottom:0}
-.tower li a .p{color:var(--ink);text-align:right}
-.tower li a .c{font-weight:600;letter-spacing:.06em;color:var(--ink);border-left:3px solid var(--line);padding-left:6px}
-.tower li a:hover{background:var(--carbon-2);color:var(--ink)}
-.tower li a.on{background:var(--gold);color:#1a1405}
-.tower li a.on .p,.tower li a.on .c{color:#1a1405}
-.tower li a.on .c{border-left-color:#1a1405}
-.tower .status{margin-top:auto;padding-right:14px;font-family:var(--f-mono);font-size:11px;color:var(--muted);display:flex;flex-direction:column;gap:6px}
-.dot-live{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-right:6px;box-shadow:0 0 0 0 var(--green);animation:pulse 2s infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(53,212,111,.6)}70%{box-shadow:0 0 0 7px rgba(53,212,111,0)}100%{box-shadow:0 0 0 0 rgba(53,212,111,0)}}
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-/* hero */
-.hero{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px;align-items:end;position:relative;padding-top:12px}
-.lights{display:flex;gap:10px;margin-bottom:22px;align-items:center;flex-wrap:wrap}
-.pod{background:#050608;border:1px solid var(--line);border-radius:6px;padding:6px;display:flex;flex-direction:column;gap:5px}
-.pod span{width:18px;height:18px;border-radius:50%;background:#2a0b0a;transition:background .08s,box-shadow .08s}
-.pod.on span{background:var(--red);box-shadow:0 0 12px var(--red)}
-.lights .call{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;color:var(--muted);margin-left:8px;min-width:12ch}
-.lights button{margin-left:auto}
-.hero h1{font-size:clamp(52px,10vw,128px);font-weight:800;font-style:italic;letter-spacing:-.01em;text-transform:uppercase;line-height:.86}
-.hero h1 .last{color:var(--gold);display:block}
-.hero .lede{font-size:clamp(18px,2vw,22px);max-width:34ch;margin:22px 0 0;color:var(--ink)}
-.hero .sub{color:var(--muted);margin:10px 0 0;max-width:60ch}
-.ghost-num{position:absolute;right:0;top:-40px;font-family:var(--f-display);font-weight:800;font-style:italic;font-size:clamp(160px,26vw,340px);line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(207,185,145,.16);pointer-events:none;user-select:none;z-index:0}
-.hero>:not(.ghost-num){position:relative;z-index:1}
-.driver{border:1px solid var(--line);border-top:3px solid var(--gold);padding:18px 18px 16px;display:flex;flex-direction:column;gap:12px}
-.driver dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:0;font-size:14px}
-.driver dt{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:3px}
-.driver dd{margin:0}
-.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
-.btn{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:10px 14px;border:1px solid var(--line);background:var(--carbon-2);color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:border-color .2s,background .2s}
-.btn:hover{border-color:var(--gold)}
-.btn.primary{background:var(--gold);color:#1a1405;border-color:var(--gold)}
-.btn.primary:hover{background:var(--gold-hot);border-color:var(--gold-hot)}
-.btn.small{padding:6px 10px;font-size:11px}
+    /* Carbon fiber bg texture */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 2px,
+          rgba(255,255,255,0.012) 2px,
+          rgba(255,255,255,0.012) 4px
+        ),
+        repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent 2px,
+          rgba(255,255,255,0.012) 2px,
+          rgba(255,255,255,0.012) 4px
+        );
+      pointer-events: none;
+      z-index: 0;
+    }
 
-/* fastest-lap strip */
-.laps{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line);margin-top:10px}
-.laps div{padding:14px 16px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:2px;min-width:0}
-.laps div:last-child{border-right:0}
-.laps .v{font-family:var(--f-mono);font-weight:600;font-size:clamp(20px,2.4vw,28px);color:var(--purple);font-variant-numeric:tabular-nums}
-.laps .l{font-size:13px;color:var(--muted);line-height:1.35}
-.laps .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;color:var(--purple);text-transform:uppercase;opacity:.85}
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: #ff2420; }
 
-/* section heads */
-.sec-head{display:flex;flex-direction:column;gap:10px;margin-bottom:28px;max-width:70ch}
-.sec-head h2{font-size:clamp(40px,6vw,64px);font-weight:800;font-style:italic;text-transform:uppercase}
-.sec-head h2 em{font-style:italic;color:var(--gold)}
-.sec-head p{margin:0;color:var(--muted)}
+    .container {
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
 
-/* setup / lens */
-.setup{border:1px solid var(--line);padding:20px;display:flex;flex-direction:column;gap:16px}
-.tyres{display:flex;flex-wrap:wrap;gap:10px}
-.tyre-btn{display:flex;align-items:center;gap:10px;padding:8px 14px 8px 8px;background:var(--carbon-2);border:1px solid var(--line);color:var(--ink);cursor:pointer;font-family:var(--f-body);font-size:15px;font-weight:600;transition:border-color .2s,transform .2s}
-.tyre-btn:hover{border-color:var(--muted)}
-.tyre-btn[aria-pressed="true"]{border-color:var(--gold);background:#1f1c15}
-.tyre{width:30px;height:30px;border-radius:50%;background:#111;border:5px solid var(--tc,var(--muted));display:grid;place-items:center;font-family:var(--f-mono);font-size:11px;font-weight:600;color:var(--tc,var(--muted));flex:none}
-.tyre-btn[aria-pressed="true"] .tyre{animation:spin .6s ease-out}
-@keyframes spin{from{transform:rotate(-180deg)}to{transform:rotate(0)}}
-.t-ai{--tc:var(--soft)}.t-data{--tc:var(--medium)}.t-product{--tc:var(--hard)}.t-ops{--tc:var(--inter)}.t-all{--tc:var(--gold)}
-.setup-foot{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;border-top:1px dashed var(--line);padding-top:14px}
-.setup-foot p{margin:0;color:var(--muted);font-size:14px;max-width:62ch}
-.linkbox{display:flex;align-items:center;gap:8px;min-width:0;flex-wrap:wrap}
-.linkbox code{font-family:var(--f-mono);font-size:12px;color:var(--gold);background:#0a0b0e;border:1px solid var(--line);padding:6px 10px;overflow-wrap:anywhere;user-select:all}
+    /* ─── HEADER ─────────────────────────────────────── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
 
-/* season chart */
-.season-wrap{overflow-x:auto;border:1px solid var(--line)}
-.season{min-width:680px;padding:18px 18px 14px;display:flex;flex-direction:column;gap:10px;position:relative}
-.s-row{display:grid;grid-template-columns:150px 1fr;align-items:center;gap:12px}
-.s-label{font-family:var(--f-mono);font-size:12px;color:var(--muted);line-height:1.25}
-.s-label b{display:block;color:var(--ink);font-weight:600}
-.s-track{position:relative;height:34px;background:repeating-linear-gradient(90deg,transparent 0 calc(100%/45 - 1px),rgba(255,255,255,.035) calc(100%/45 - 1px) calc(100%/45))}
-.stint{position:absolute;top:4px;bottom:4px;border:0;padding:0 8px;cursor:pointer;display:flex;align-items:center;font-family:var(--f-mono);font-size:11px;font-weight:600;letter-spacing:.06em;color:#0c0c0c;background:var(--tc);clip-path:polygon(0 0,calc(100% - 8px) 0,100% 50%,calc(100% - 8px) 100%,0 100%);white-space:nowrap;overflow:hidden;transition:filter .2s,transform .2s}
-.stint:hover,.stint:focus-visible{filter:brightness(1.15);transform:translateY(-1px)}
-.stint.ongoing{background:linear-gradient(90deg,var(--tc) 80%,rgba(207,185,145,.25))}
-.stint.edu{background:repeating-linear-gradient(90deg,#2a2d35 0 18px,#22252c 18px 36px);color:var(--ink);cursor:default;clip-path:none}
-.flag{position:absolute;right:-2px;top:2px;bottom:2px;width:22px;background-image:linear-gradient(45deg,#fff 25%,transparent 25%,transparent 75%,#fff 75%),linear-gradient(45deg,#fff 25%,#111 25%,#111 75%,#fff 75%);background-size:10px 10px;background-position:0 0,5px 5px}
-.s-axis{display:grid;grid-template-columns:150px 1fr;gap:12px}
-.s-ticks{position:relative;height:22px;border-top:1px solid var(--line)}
-.s-ticks span{position:absolute;top:4px;transform:translateX(-50%);font-family:var(--f-mono);font-size:10px;color:var(--muted);white-space:nowrap}
-.s-ticks span:first-child{transform:none}.s-ticks span:last-child{transform:translateX(-100%)}
-.now{position:absolute;top:8px;bottom:30px;width:0;border-left:1px dashed var(--green);pointer-events:none}
-.now b{position:absolute;top:-2px;left:4px;font-family:var(--f-mono);font-size:10px;color:var(--green);font-weight:600;white-space:nowrap}
-.legend{display:flex;flex-wrap:wrap;gap:16px;margin-top:14px;font-size:13px;color:var(--muted)}
-.legend span{display:inline-flex;align-items:center;gap:8px}
-.legend .sw{width:14px;height:10px;background:var(--tc)}
-.note{margin-top:18px;border-left:3px solid var(--gold);padding:10px 14px;background:var(--carbon);color:var(--muted);font-size:14px;max-width:80ch}
-.note b{color:var(--ink)}
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--yellow), var(--accent));
+      background-size: 200%;
+      animation: shimmer 3s linear infinite;
+    }
 
-/* race reports */
-.races{display:flex;flex-direction:column;gap:22px}
-.race{border:1px solid var(--line);background:var(--carbon);display:grid;grid-template-columns:minmax(0,1fr) 230px;transition:opacity .35s,border-color .35s;scroll-margin-top:24px}
-.race:target,.race.flash{border-color:var(--gold)}
-.race-main{padding:22px 24px;display:flex;flex-direction:column;gap:14px;min-width:0}
-.race-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px}
-.code{font-family:var(--f-mono);font-weight:600;font-size:12px;letter-spacing:.1em;padding:3px 7px;background:var(--gold);color:#1a1405}
-.race h3{font-size:clamp(28px,3.4vw,38px);font-weight:800;font-style:italic;text-transform:uppercase;width:100%}
-.race .role{font-size:18px;font-weight:700;color:var(--gold)}
-.race .meta{font-family:var(--f-mono);font-size:12px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 14px}
-.brief{margin:0;color:var(--muted);font-size:15px;max-width:72ch}
-.brief b{color:var(--ink);font-weight:600}
-.bul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;max-width:78ch}
-.bul li{position:relative;padding-left:26px;transition:opacity .3s}
-.bul li::before{content:"";position:absolute;left:2px;top:.55em;width:10px;height:10px;border-radius:50%;background:var(--tc,var(--muted));box-shadow:0 0 0 3px #111}
-.bul li[data-lens^="ai"]{--tc:var(--soft)}
-.bul li[data-lens^="data"]{--tc:var(--medium)}
-.bul li[data-lens^="product"]{--tc:var(--hard)}
-.bul li[data-lens^="ops"]{--tc:var(--inter)}
-.bul strong{color:var(--ink);font-weight:700}
-.chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{font-family:var(--f-mono);font-size:11px;padding:3px 8px;border:1px solid var(--line);color:var(--muted);background:#0e1015;transition:border-color .2s,color .2s}
-.chip.hit{border-color:var(--gold);color:var(--gold)}
-.race-side{border-left:1px solid var(--line);padding:22px 18px;display:flex;flex-direction:column;gap:16px;background:linear-gradient(180deg,#171a21,#121419)}
-.fl{border:1px solid rgba(183,92,255,.45);background:rgba(183,92,255,.08);padding:12px}
-.fl .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;color:var(--purple);text-transform:uppercase}
-.fl .v{font-family:var(--f-mono);font-weight:600;font-size:26px;color:var(--purple);line-height:1.2;margin-top:4px}
-.fl .d{font-size:13px;color:var(--muted);line-height:1.35;margin-top:2px}
-.sectors{display:flex;flex-direction:column;gap:6px}
-.sectors .row{display:grid;grid-template-columns:22px 1fr;gap:8px;align-items:center;font-size:13px;color:var(--muted)}
-.sectors .tyre{width:22px;height:22px;border-width:4px;font-size:9px}
-.grid-hist{font-size:13px;color:var(--muted);border-top:1px dashed var(--line);padding-top:12px}
-.grid-hist ol{margin:6px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:4px;font-family:var(--f-mono);font-size:11px}
-.grid-hist li::before{content:"↑ ";color:var(--green)}
-.grid-hist li:last-child{color:var(--ink)}
-.grid-hist li:last-child::before{content:"● ";color:var(--green)}
-html[data-lens]:not([data-lens="all"]) .bul li.off{opacity:.32}
-html[data-lens]:not([data-lens="all"]) .race.cold{opacity:.55}
-.sortnote{font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:.06em;margin:-10px 0 4px}
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
 
-/* garage */
-.garage{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.build{border:1px solid var(--line);background:var(--carbon);padding:20px;display:flex;flex-direction:column;gap:12px;min-width:0;transition:opacity .35s,border-color .35s;scroll-margin-top:24px}
-.build:hover{border-color:#3a4150}
-.build h3{font-size:28px;font-weight:800;font-style:italic;text-transform:uppercase}
-.build p{margin:0;color:var(--muted);font-size:15px}
-.build .bul{font-size:14.5px}
-.build .foot{margin-top:auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;align-items:center;padding-top:6px}
-html[data-lens]:not([data-lens="all"]) .build.cold{opacity:.55}
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+    }
 
-/* telemetry */
-.tele-controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:12px}
-.tele-wrap{overflow-x:auto;border:1px solid var(--line);background:var(--carbon)}
-table.tele{border-collapse:collapse;width:100%;min-width:640px;font-size:13px}
-.tele th,.tele td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:center}
-.tele thead th{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--muted);font-weight:600;position:sticky;top:0;background:var(--carbon-2)}
-.tele thead th a{text-decoration:none;color:var(--ink)}
-.tele thead th a:hover{color:var(--gold)}
-.tele th.sk{text-align:left;font-family:var(--f-body);font-size:14px;font-weight:600;color:var(--ink);white-space:nowrap}
-.tele .skn{display:inline-flex;align-items:center;gap:8px}
-.tele th.sk .tyre{width:16px;height:16px;border-width:3px}
-.tele td.n{font-family:var(--f-mono);font-variant-numeric:tabular-nums;color:var(--gold);font-weight:600}
-.tele .pip{display:inline-block;width:12px;height:12px;border-radius:2px;background:var(--line)}
-.tele .pip.y{background:var(--gold);box-shadow:0 0 8px rgba(207,185,145,.35)}
-.tele a.pipl{display:inline-flex;padding:4px}
-.tele tbody tr:hover{background:#181b22}
-.tele .sep{border-left:1px solid #3a4150}
-.bar{display:block;height:6px;background:var(--gold);min-width:4px}
+    .brand {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--text);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
 
-/* paddock posters */
-.posters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-.poster{border:1px solid var(--line);background:var(--carbon);display:flex;flex-direction:column;min-width:0}
-.poster .frame{aspect-ratio:3/4;max-width:100%;position:relative;overflow:hidden;background:#0a0b0e;border:0;padding:0;cursor:zoom-in;display:block;width:100%}
-.poster .frame img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
-.poster .frame:hover img{transform:scale(1.03)}
-.poster .cover{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:16px;gap:6px;background:
-  repeating-linear-gradient(135deg,rgba(207,185,145,.06) 0 14px,transparent 14px 28px),
-  radial-gradient(120% 60% at 50% 110%,rgba(207,185,145,.18),transparent 60%),#0f1116;cursor:default}
-.poster .cover .big{font-family:var(--f-display);font-weight:800;font-style:italic;font-size:44px;line-height:.9;text-transform:uppercase;color:rgba(207,185,145,.85)}
-.poster .cover .tag{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.poster .cap{padding:12px 14px;display:flex;flex-direction:column;gap:4px;border-top:1px solid var(--line)}
-.poster .cap b{font-size:15px}
-.poster .cap span{font-size:13px;color:var(--muted);line-height:1.35}
-.lightbox{position:fixed;inset:0;z-index:100;background:rgba(5,6,8,.94);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;gap:12px}
-.lightbox img{max-width:100%;max-height:calc(100% - 60px);object-fit:contain;border:1px solid var(--line)}
-.lightbox .bar2{display:flex;gap:10px;align-items:center;width:100%;max-width:1000px;justify-content:space-between}
-.lightbox .bar2 span{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+    .brand span {
+      color: var(--accent);
+    }
 
-/* radio */
-.radio{border:1px solid var(--line);border-top:3px solid var(--gold);padding:28px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:28px;align-items:center}
-.radio .quote{font-family:var(--f-display);font-style:italic;font-weight:800;font-size:clamp(34px,5vw,56px);line-height:.95;text-transform:uppercase}
-.radio .quote span{color:var(--gold)}
-.radio .msgs{display:flex;flex-direction:column;gap:10px}
-.channel{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;padding:12px 14px;background:var(--carbon-2);border:1px solid var(--line)}
-.channel .lab{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
-.channel .val{font-size:16px;font-weight:600;overflow-wrap:anywhere;user-select:all}
-.channel a.val{text-decoration:none}
-.channel a.val:hover{color:var(--gold)}
-footer{font-family:var(--f-mono);font-size:11px;color:var(--muted);letter-spacing:.08em;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;border-top:1px solid var(--line);padding-top:16px}
+    /* Racing flag icon before brand */
+    .brand::before {
+      content: '⬛⬜⬛⬜ ';
+      font-size: 0.6rem;
+      vertical-align: middle;
+      margin-right: 4px;
+      opacity: 0.7;
+    }
 
-/* responsive */
-@media (max-width:1020px){
-  .garage{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .posters{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .race{grid-template-columns:1fr}
-  .race-side{border-left:0;border-top:1px solid var(--line);flex-direction:row;flex-wrap:wrap}
-  .race-side>*{flex:1 1 200px}
-}
-@media (max-width:860px){
-  .shell{grid-template-columns:minmax(0,1fr)}
-  .tower nav{min-width:0;flex:1}
-  .tower{position:sticky;top:env(safe-area-inset-top,0px);height:auto;z-index:50;padding:8px 0 8px 16px;flex-direction:row;align-items:center;gap:10px;background:var(--asphalt);border-bottom:1px solid var(--line)}
-  .tower-head .who,.tower .status{display:none}
-  .tower-head .num{font-size:26px}
-  .tower ol{flex-direction:row;overflow-x:auto;border:0;background:transparent;scrollbar-width:none;gap:4px;padding-right:16px}
-  .tower ol::-webkit-scrollbar{display:none}
-  .tower li a{grid-template-columns:auto auto;border:1px solid var(--line);padding:6px 8px;white-space:nowrap;background:var(--carbon)}
-  .tower li a .c{display:none}
-  .hero{grid-template-columns:1fr}
-  .radio{grid-template-columns:1fr}
-  main{gap:72px}
-  html{scroll-padding-top:64px}
-  .race,.build{scroll-margin-top:64px}
-}
-@media (max-width:560px){
-  .laps{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .laps div:nth-child(2){border-right:0}
-  .laps div:nth-child(-n+2){border-bottom:1px solid var(--line)}
-  .garage,.posters{grid-template-columns:1fr}
-  .race-main{padding:18px 16px}
-  .pod span{width:14px;height:14px}
-  .lights .call{min-width:0}
-  .radio{padding:20px 16px}
-}
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation:none!important;transition:none!important}
-  html{scroll-behavior:auto}
-}
-</style>
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      font-family: 'Barlow Condensed', sans-serif;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--text);
+    }
+    nav a:hover::after { width: 100%; }
+
+    /* ─── SECTION BASE ───────────────────────────────── */
+    section {
+      padding: 80px 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2.6rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::before {
+      content: '';
+      position: absolute;
+      left: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 5px;
+      height: 80%;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      max-width: 750px;
+      margin-bottom: 36px;
+      font-size: 0.97rem;
+    }
+
+    /* ─── HERO ───────────────────────────────────────── */
+    .hero {
+      padding: 100px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Speed lines background */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; right: -100px; bottom: 0;
+      width: 60%;
+      background: repeating-linear-gradient(
+        88deg,
+        transparent 0px,
+        transparent 18px,
+        rgba(225,6,0,0.03) 18px,
+        rgba(225,6,0,0.03) 19px
+      );
+      pointer-events: none;
+    }
+
+    /* Big background number */
+    .hero::after {
+      content: '01';
+      position: absolute;
+      right: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 28vw;
+      font-weight: 900;
+      color: rgba(225,6,0,0.04);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      font-family: 'Share Tech Mono', monospace;
+      color: var(--accent);
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 28px;
+      height: 2px;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .hero h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2.6rem, 5vw, 4.4rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 32px;
+      line-height: 1.75;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      transition: all 0.2s;
+      border: 2px solid transparent;
+      clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      color: white;
+      box-shadow: 0 0 24px var(--accent-glow);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border-color: var(--border-bright);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* Hero info card */
+    .hero-card {
+      background: var(--surface);
+      border: 1px solid var(--border-bright);
+      border-top: 3px solid var(--accent);
+      border-radius: 4px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: 'DRIVER PROFILE';
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      color: var(--muted2);
+    }
+
+    .hero-card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .hero-card ul {
+      padding-left: 0;
+      list-style: none;
+      color: var(--muted);
+    }
+
+    .hero-card li {
+      margin-bottom: 12px;
+      padding-left: 16px;
+      position: relative;
+      font-size: 0.92rem;
+    }
+
+    .hero-card li::before {
+      content: '▶';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.5rem;
+      top: 6px;
+    }
+
+    /* ─── CARDS ──────────────────────────────────────── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 26px;
+      position: relative;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .card:hover {
+      border-color: var(--border-bright);
+      transform: translateY(-3px);
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent) 0%, transparent 60%);
+    }
+
+    /* ─── ABOUT ──────────────────────────────────────── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 22px;
+    }
+
+    .card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .card p, .card li {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .card p + p {
+      margin-top: 4px;
+    }
+
+    .card p strong {
+      color: var(--text);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .skills-list,
+    .bullet-list {
+      padding-left: 0;
+      list-style: none;
+      color: var(--muted);
+    }
+
+    .skills-list li,
+    .bullet-list li {
+      margin-bottom: 10px;
+      padding-left: 16px;
+      position: relative;
+      font-size: 0.93rem;
+    }
+
+    .skills-list li::before,
+    .bullet-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.8rem;
+    }
+
+    /* ─── EXPERIENCE ─────────────────────────────────── */
+    .experience-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .experience-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .experience-item:hover {
+      border-color: var(--border-bright);
+      transform: translateX(4px);
+    }
+
+    /* Left racing stripe */
+    .experience-item::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+      background: var(--accent);
+    }
+
+    /* Sector indicator */
+    .experience-item::after {
+      content: attr(data-sector);
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      color: var(--muted2);
+    }
+
+    .experience-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .experience-top h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    .company {
+      font-family: 'Barlow Condensed', sans-serif;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .meta {
+      font-family: 'Share Tech Mono', monospace;
+      color: var(--muted2);
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 16px;
+    }
+
+    .date {
+      font-family: 'Share Tech Mono', monospace;
+      color: var(--yellow);
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      padding: 4px 10px;
+      border: 1px solid rgba(255, 215, 0, 0.25);
+      border-radius: 2px;
+      height: fit-content;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      background: rgba(225, 6, 0, 0.08);
+      color: #ff6b68;
+      border: 1px solid rgba(225, 6, 0, 0.2);
+      border-radius: 2px;
+      padding: 5px 10px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+    }
+
+    /* ─── PROJECTS ───────────────────────────────────── */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .card .project-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .card .project-tools {
+      margin-top: 16px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+      line-height: 1.7;
+    }
+
+    .card .project-tools strong {
+      color: var(--accent);
+      font-family: 'Barlow Condensed', sans-serif;
+      letter-spacing: 0.1em;
+      font-size: 0.7rem;
+    }
+
+    .card .project-link {
+      margin-top: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .card .project-link::after {
+      content: '→';
+    }
+
+    /* ─── CONTACT ────────────────────────────────────── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 26px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .contact-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 0 30px rgba(225,6,0,0.1);
+    }
+
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    .contact-card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .contact-card a {
+      font-size: 0.94rem;
+      color: var(--text);
+    }
+
+    .contact-card a:hover {
+      color: var(--accent);
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────── */
+    footer {
+      padding: 32px 0 44px;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      position: relative;
+      z-index: 1;
+    }
+
+    footer::before {
+      content: '⬛⬜⬛⬜⬛⬜⬛⬜⬛⬜⬛⬜⬛⬜⬛⬜⬛⬜⬛⬜⬛⬜⬛⬜⬛⬜⬛⬜⬛⬜⬛⬜⬛⬜⬛⬜⬛⬜⬛⬜';
+      display: block;
+      font-size: 0.55rem;
+      color: var(--muted2);
+      margin-bottom: 16px;
+      overflow: hidden;
+      white-space: nowrap;
+      letter-spacing: 2px;
+    }
+
+    footer p {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      color: var(--muted2);
+    }
+
+    /* ─── SECTION DIVIDER ────────────────────────────── */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+
+    .section-number {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero-grid,
+      .about-grid,
+      .project-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero { padding-top: 72px; }
+      .hero::after { display: none; }
+    }
+
+    @media (max-width: 620px) {
+      nav ul { gap: 14px; }
+      .hero h1 { font-size: 2.4rem; }
+      .section-title { font-size: 2rem; }
+      .card, .experience-item, .hero-card { padding: 18px; }
+    }
+
+    /* ─── PAGE LOAD ANIMATION ────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero > .container > * {
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .hero-grid > div:first-child { animation-delay: 0.1s; }
+    .hero-grid > div:last-child { animation-delay: 0.3s; }
+  </style>
 </head>
 <body>
-
-<div class="lap" aria-hidden="true"><i id="lapbar"></i></div>
-
-<div class="shell">
-  <aside class="tower" aria-label="Sections">
-    <div class="tower-head">
-      <span class="num">07</span>
-      <span class="who"><b>SINGH</b>Purdue · CS '27</span>
+  <header>
+    <div class="container nav">
+      <div class="brand"><span>Saksham</span> Singh</div>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
     </div>
-    <nav>
-      <ol id="towerNav">
-        <li><a href="#grid"><span class="p">1</span><span class="c">GRD</span><span class="l">Grid</span></a></li>
-        <li><a href="#setup"><span class="p">2</span><span class="c">SET</span><span class="l">Setup</span></a></li>
-        <li><a href="#season"><span class="p">3</span><span class="c">SEA</span><span class="l">Season</span></a></li>
-        <li><a href="#races"><span class="p">4</span><span class="c">EXP</span><span class="l">Experience</span></a></li>
-        <li><a href="#garage"><span class="p">5</span><span class="c">PRJ</span><span class="l">Projects</span></a></li>
-        <li><a href="#telemetry"><span class="p">6</span><span class="c">SKL</span><span class="l">Skills</span></a></li>
-        <li><a href="#paddock"><span class="p">7</span><span class="c">RES</span><span class="l">Research</span></a></li>
-        <li><a href="#radio"><span class="p">8</span><span class="c">RAD</span><span class="l">Contact</span></a></li>
-      </ol>
-    </nav>
-    <div class="status">
-      <span><i class="dot-live"></i>Open to new-grad roles, 2027</span>
-      <span>West Lafayette, IN</span>
-    </div>
-  </aside>
+  </header>
 
   <main>
-    <!-- ============ GRID / HERO ============ -->
-    <section id="grid" class="hero" aria-labelledby="h-name">
-      <div class="ghost-num" aria-hidden="true">07</div>
-      <div>
-        <div class="lights" aria-label="Start lights">
-          <div class="pod"><span></span><span></span></div>
-          <div class="pod"><span></span><span></span></div>
-          <div class="pod"><span></span><span></span></div>
-          <div class="pod"><span></span><span></span></div>
-          <div class="pod"><span></span><span></span></div>
-          <span class="call mono" id="lightsCall" aria-live="polite">LIGHTS OUT</span>
-        </div>
-        <p class="eyebrow">Computer Science · Purdue University · Class of May 2027</p>
-        <h1 id="h-name">Saksham <span class="last">Singh</span></h1>
-        <p class="lede">I build machine-learning models, analytics and AI tools that industry teams put to work.</p>
-        <p class="sub">Four industry partner projects through Purdue's Data Mine (Bayer, Purdue Athletics, Prediction Guard, BASF), a data role running hiring analytics for Purdue Dining & Culinary, and full-stack AI builds on the side.</p>
-        <div class="cta">
-          <a class="btn primary" href="#races">See the experience</a>
-          <a class="btn" href="#telemetry">Trace a skill</a>
-          <button class="btn" type="button" id="replay" aria-label="Replay start lights">↻ Restart lights</button>
-        </div>
-      </div>
-      <aside class="driver carbon-bg" aria-label="Profile">
-        <p class="eyebrow" style="margin:0">Driver profile</p>
-        <dl>
-          <dt>Team</dt><dd>Purdue University · The Data Mine</dd>
-          <dt>Degree</dt><dd>B.S. Computer Science, Aug 2023 – May 2027</dd>
-          <dt>Certs</dt><dd>Entrepreneurship &amp; Innovation · Applications in Data Science</dd>
-          <dt>Focus</dt><dd>Applied AI &amp; ML · Data &amp; BI · Product delivery</dd>
-          <dt>Compute</dt><dd>Purdue Anvil HPC cluster</dd>
-        </dl>
-      </aside>
-      <div class="laps" aria-label="Fastest laps">
-        <div><span class="k">Fastest lap · Bayer</span><span class="v">77%</span><span class="l">accuracy on maize yield prediction (XGBoost, Random Forest)</span></div>
-        <div><span class="k">Fastest lap · BASF</span><span class="v">1.2M+</span><span class="l">transaction records segmented to profile growers</span></div>
-        <div><span class="k">Fastest lap · Dining</span><span class="v">1,200+</span><span class="l">employee profiles validated across 9 locations</span></div>
-        <div><span class="k">Fastest lap · Athletics</span><span class="v">~30%</span><span class="l">less manual analysis for the strength staff</span></div>
-      </div>
-    </section>
-
-    <!-- ============ SETUP / LENS ============ -->
-    <section id="setup" aria-labelledby="h-setup">
-      <div class="sec-head">
-        <p class="eyebrow">Car setup</p>
-        <h2 id="h-setup">Pick a <em>setup</em></h2>
-        <p>Same car, same record, tuned for the job you're hiring for. Choosing a compound highlights the matching work everywhere on this page and moves the most relevant experience to the front. Nothing is hidden.</p>
-      </div>
-      <div class="setup carbon-bg">
-        <div class="tyres" role="group" aria-label="Choose a focus">
-          <button class="tyre-btn" type="button" data-set="all" aria-pressed="true"><span class="tyre t-all">ALL</span>Full record</button>
-          <button class="tyre-btn" type="button" data-set="ai" aria-pressed="false"><span class="tyre t-ai">S</span>AI &amp; Machine Learning</button>
-          <button class="tyre-btn" type="button" data-set="data" aria-pressed="false"><span class="tyre t-data">M</span>Data &amp; BI</button>
-          <button class="tyre-btn" type="button" data-set="product" aria-pressed="false"><span class="tyre t-product">H</span>Product &amp; Program</button>
-          <button class="tyre-btn" type="button" data-set="ops" aria-pressed="false"><span class="tyre t-ops">I</span>Business &amp; Operations</button>
-        </div>
-        <div class="setup-foot">
-          <p id="setupNote">Showing the full record. Soft for AI &amp; ML, medium for data and BI, hard for product and program work, intermediate for business and operations.</p>
-          <div class="linkbox">
-            <code id="setupLink">saakshhh.github.io</code>
-            <button class="btn small" type="button" id="copyLink">Copy link</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ SEASON ============ -->
-    <section id="season" aria-labelledby="h-season">
-      <div class="sec-head">
-        <p class="eyebrow">2023 – 2027 season</p>
-        <h2 id="h-season">The <em>season</em> so far</h2>
-        <p>Every stint on one timeline. Select a stint to jump to its race report.</p>
-      </div>
-      <div class="season-wrap">
-        <div class="season" id="seasonChart">
-          <div class="s-row">
-            <div class="s-label"><b>The Data Mine</b>Corporate Partners</div>
-            <div class="s-track">
-              <button class="stint t-ai" data-go="bay" style="left:0%;width:20%" title="Bayer · Aug 2023 – Apr 2024">BAY</button>
-              <button class="stint t-data" data-go="ath" style="left:26.667%;width:20%" title="Purdue Athletics · Aug 2024 – Apr 2025">ATH</button>
-              <button class="stint t-ai" data-go="pgd" style="left:53.333%;width:11.111%" title="Prediction Guard · Aug – Dec 2025">PGD</button>
-              <button class="stint t-product" data-go="bsf" style="left:64.444%;width:8.889%" title="BASF · Jan – Apr 2026">BSF</button>
-            </div>
-          </div>
-          <div class="s-row">
-            <div class="s-label"><b>Purdue Dining</b>&amp; Culinary</div>
-            <div class="s-track">
-              <button class="stint t-ops ongoing" data-go="din" style="left:51.111%;width:34.111%" title="Purdue Dining & Culinary · Jul 2025 – Present">DIN · ONGOING</button>
-            </div>
-          </div>
-          <div class="s-row">
-            <div class="s-label"><b>Purdue CS</b>B.S. + 2 certificates</div>
-            <div class="s-track">
-              <div class="stint edu" style="left:0;width:100%">B.S. COMPUTER SCIENCE<span class="flag" aria-hidden="true"></span></div>
-            </div>
-          </div>
-          <div class="s-axis">
-            <div></div>
-            <div class="s-ticks">
-              <span style="left:0%">AUG 2023</span>
-              <span style="left:11.111%">JAN 2024</span>
-              <span style="left:37.778%">JAN 2025</span>
-              <span style="left:64.444%">JAN 2026</span>
-              <span style="left:100%">MAY 2027 🏁</span>
-            </div>
-          </div>
-          <div class="now" id="nowLine"><b>NOW</b></div>
-        </div>
-      </div>
-      <div class="legend">
-        <span><i class="sw t-ai"></i>AI &amp; ML</span>
-        <span><i class="sw t-data"></i>Data &amp; BI</span>
-        <span><i class="sw t-product"></i>Product &amp; Program</span>
-        <span><i class="sw t-ops"></i>Business &amp; Operations</span>
-      </div>
-      <p class="note"><b>Why four partners in four years?</b> The Data Mine is Purdue's applied data science program. Students are placed on a new corporate partner project each academic year or semester, so each stint is a separate industry engagement inside one program, not a job change. Partner work runs under NDAs, so some results are described by scope rather than exact figures.</p>
-    </section>
-
-    <!-- ============ RACES / EXPERIENCE ============ -->
-    <section id="races" aria-labelledby="h-races">
-      <div class="sec-head">
-        <p class="eyebrow">Race reports</p>
-        <h2 id="h-races"><em>Experience</em></h2>
-        <p>Each bullet is marked with the compound it proves. The purple box is the fastest lap: the result I'd point to first.</p>
-      </div>
-      <p class="sortnote" id="sortNote" hidden></p>
-      <div class="races" id="raceList">
-
-        <article class="race" id="din" data-order="0" data-skills="Excel|Power BI|Data Cleaning|Data Validation|Dashboards|Workforce Analytics|Stakeholder Reporting|Leadership">
-          <div class="race-main">
-            <div class="race-top">
-              <span class="code">DIN</span>
-              <span class="meta"><span>Jul 2025 – Present</span><span>West Lafayette, IN</span></span>
-              <h3>Purdue Dining &amp; Culinary</h3>
-              <span class="role">Central Hiring Data Manager</span>
-            </div>
-            <p class="brief">Runs the data behind student hiring for Purdue's dining operation, after working up from the floor of Wiley Dining Court.</p>
-            <ul class="bul">
-              <li data-lens="data ops">Built an <strong>Excel validation framework</strong> that cleans and reconciles multi-source, unstructured applicant data for <strong>1,200+ student-employee profiles across 9 locations</strong>.</li>
-              <li data-lens="data">Turned raw recruitment data into <strong>Power BI hiring reports and dashboards</strong> that make reporting more accurate and support staffing decisions.</li>
-              <li data-lens="ops">Paired front-line dining experience with data analysis to improve <strong>workforce planning and the hiring process</strong> across locations.</li>
-              <li data-lens="ops product">Served as <strong>Jumpstart Chair for 2026</strong>.</li>
-            </ul>
-            <div class="chips"></div>
-          </div>
-          <div class="race-side">
-            <div class="fl"><div class="k">Fastest lap</div><div class="v">1,200+</div><div class="d">profiles validated across 9 dining locations</div></div>
-            <div class="grid-hist">Grid history
-              <ol>
-                <li>Student Associate, Wiley Dining Court</li>
-                <li>Cook in Training</li>
-                <li>Supervisor in Training</li>
-                <li>Data Analyst in Training</li>
-                <li>Central Hiring Data Manager</li>
-              </ol>
-            </div>
-          </div>
-        </article>
-
-        <article class="race" id="bsf" data-order="1" data-skills="Python|Tableau|Jira|Agile / Scrum|Customer Segmentation|Geospatial Analysis|Product Roadmapping|User Stories|Dashboards|Stakeholder Reporting|Leadership">
-          <div class="race-main">
-            <div class="race-top">
-              <span class="code">BSF</span>
-              <span class="meta"><span>Jan 2026 – Apr 2026</span><span>Data Mine · Partner 4 of 4</span></span>
-              <h3>BASF</h3>
-              <span class="role">Project Manager</span>
-            </div>
-            <p class="brief">Led a student team on <b>grower segmentation</b> for BASF's agricultural business, from data to strategy recommendations.</p>
-            <ul class="bul">
-              <li data-lens="product">Led an <strong>Agile Scrum team</strong> through sprint planning, weekly check-ins, retrospectives and task prioritization, keeping deliverables tied to BASF's business questions.</li>
-              <li data-lens="product">Translated engineering and business goals into <strong>Jira user stories and a prioritized roadmap</strong>.</li>
-              <li data-lens="data ai">Directed <strong>Python customer segmentation across 1.2M+ transaction records</strong>, combining demographic, behavioral, geospatial and public agricultural data to profile grower segments.</li>
-              <li data-lens="data ops">Built <strong>Tableau dashboards</strong> that made the segment findings usable for both technical and non-technical stakeholders.</li>
-            </ul>
-            <div class="chips"></div>
-          </div>
-          <div class="race-side">
-            <div class="fl"><div class="k">Fastest lap</div><div class="v">1.2M+</div><div class="d">transaction records segmented in Python</div></div>
-          </div>
-        </article>
-
-        <article class="race" id="pgd" data-order="2" data-skills="Generative AI|RAG|LLM Agents|Claude|Cursor|API Integration|Technical Documentation|Stakeholder Reporting">
-          <div class="race-main">
-            <div class="race-top">
-              <span class="code">PGD</span>
-              <span class="meta"><span>Aug 2025 – Dec 2025</span><span>Data Mine · Partner 3 of 4</span></span>
-              <h3>Prediction Guard</h3>
-              <span class="role">Artificial Intelligence Researcher</span>
-            </div>
-            <p class="brief">Prediction Guard builds <b>private, secure AI</b> for regulated industries. Built an AI agent on top of it and the material businesses need to adopt it.</p>
-            <ul class="bul">
-              <li data-lens="ai">Built a <strong>RAG-based retail customer-support agent</strong> end to end, using Cursor and Claude for AI-assisted development, to move manual support work into automated workflows.</li>
-              <li data-lens="ai ops">Built <strong>secure integrations</strong> so business users in regulated environments could adopt private AI tools without exposing confidential data.</li>
-              <li data-lens="product ai">Wrote <strong>deployment scripts, setup and mitigation guides and starter resources</strong> that let non-technical stakeholders bring AI into their own workflows.</li>
-            </ul>
-            <div class="chips"></div>
-          </div>
-          <div class="race-side">
-            <div class="fl"><div class="k">Fastest lap</div><div class="v">RAG agent</div><div class="d">retail support agent, built end to end</div></div>
-          </div>
-        </article>
-
-        <article class="race" id="ath" data-order="3" data-skills="SQL|Python|Power BI|Tableau|Dashboards|Metric Design|Feature Engineering|Anvil HPC|Stakeholder Reporting">
-          <div class="race-main">
-            <div class="race-top">
-              <span class="code">ATH</span>
-              <span class="meta"><span>Aug 2024 – Apr 2025</span><span>Data Mine · Partner 2 of 4</span></span>
-              <h3>Purdue Athletics</h3>
-              <span class="role">Data Science Researcher · Strength &amp; Conditioning</span>
-            </div>
-            <p class="brief">Gave the strength staff one consistent way to measure athletes and spot <b>injury risk</b> early.</p>
-            <ul class="bul">
-              <li data-lens="data ai">Combined <strong>Catapult wearable and HitTrax hitting data</strong> with SQL and Python to build a standardized <strong>Total Score of Athleticism</strong> and flag high-risk injury signals.</li>
-              <li data-lens="data ops">Built <strong>6+ Power BI and Tableau dashboards</strong> tracking KPI trends and risk signals, <strong>cutting manual analysis by about 30%</strong> and helping coaches make decisions faster.</li>
-              <li data-lens="data">Ran data processing on Purdue's <strong>Anvil high-performance computing cluster</strong>.</li>
-              <li data-lens="product">Presented findings to <strong>coaches, faculty and corporate partners</strong> through dashboards and briefings.</li>
-            </ul>
-            <div class="chips"></div>
-          </div>
-          <div class="race-side">
-            <div class="fl"><div class="k">Fastest lap</div><div class="v">~30%</div><div class="d">less manual analysis for the strength staff</div></div>
-          </div>
-        </article>
-
-        <article class="race" id="bay" data-order="4" data-skills="Python|XGBoost|Random Forest|scikit-learn|Feature Engineering|Data Pipelines|Data Cleaning|Anvil HPC|Stakeholder Reporting">
-          <div class="race-main">
-            <div class="race-top">
-              <span class="code">BAY</span>
-              <span class="meta"><span>Aug 2023 – Apr 2024</span><span>Data Mine · Partner 1 of 4</span></span>
-              <h3>Bayer</h3>
-              <span class="role">Undergraduate Data Scientist</span>
-            </div>
-            <p class="brief">Predicted <b>maize yield</b> from genetic and environmental data to help Bayer prioritize research.</p>
-            <ul class="bul">
-              <li data-lens="ai">Built <strong>XGBoost and Random Forest</strong> models predicting maize yield outcomes at <strong>77% accuracy</strong>, used to prioritize high-impact research areas.</li>
-              <li data-lens="data ai">Engineered a <strong>Python pipeline</strong> integrating thousands of genetic and environmental markers, <strong>improving data processing efficiency by 34%</strong>.</li>
-              <li data-lens="data">Identified the key environmental drivers of yield and left a <strong>standardized data foundation</strong> for later analysis.</li>
-              <li data-lens="product">Presented methodology, results and business implications to <strong>Bayer stakeholders</strong>.</li>
-            </ul>
-            <div class="chips"></div>
-          </div>
-          <div class="race-side">
-            <div class="fl"><div class="k">Fastest lap</div><div class="v">77%</div><div class="d">yield prediction accuracy · 34% faster processing</div></div>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- ============ GARAGE / PROJECTS ============ -->
-    <section id="garage" aria-labelledby="h-garage">
-      <div class="sec-head">
-        <p class="eyebrow">The garage</p>
-        <h2 id="h-garage"><em>Projects</em></h2>
-        <p>Builds with public code. Open any of them on GitHub.</p>
-      </div>
-      <div class="garage" id="buildList">
-        <article class="build" id="snp" data-skills="Python|FastAPI|Flutter|Generative AI|AWS Bedrock|AWS Textract|Amazon Polly|Amazon S3|API Integration">
-          <span class="code" style="align-self:flex-start">SNP</span>
-          <h3>Snap Study</h3>
-          <p>AI-Nable: turns course material into simplified text and audio for students with ADHD, dyslexia or low literacy.</p>
-          <ul class="bul">
-            <li data-lens="ai">Connected a <strong>Flutter</strong> app to a <strong>FastAPI</strong> backend calling <strong>4 AWS services</strong> (Textract, Bedrock, Polly, S3).</li>
-            <li data-lens="ai product">Document-to-simplified-text and voice responses in <strong>under 8 seconds</strong>.</li>
-          </ul>
-          <div class="chips"></div>
-          <div class="foot"><a class="btn small" href="https://github.com/saakshhh/AI-Nable" target="_blank" rel="noopener">View on GitHub ↗</a></div>
-        </article>
-        <article class="build" id="snt" data-skills="Python|FastAPI|PostgreSQL|Docker|NLP|FinBERT|JavaScript|Chart.js|Dashboards">
-          <span class="code" style="align-self:flex-start">SNT</span>
-          <h3>Sentiment Platform</h3>
-          <p>Pulls financial news on a public company, scores it with FinBERT and charts whether coverage is trending positive or negative.</p>
-          <ul class="bul">
-            <li data-lens="ai">Applied <strong>FinBERT</strong> sentiment analysis to NewsAPI articles and stored daily results.</li>
-            <li data-lens="data">Built a <strong>FastAPI + PostgreSQL</strong> service in <strong>Docker Compose</strong> with a Chart.js dashboard.</li>
-          </ul>
-          <div class="chips"></div>
-          <div class="foot"><a class="btn small" href="https://github.com/saakshhh/sentiment-analysis-platform" target="_blank" rel="noopener">View on GitHub ↗</a></div>
-        </article>
-        <article class="build" id="cev" data-skills="Python|Flask|SQL|MySQL|SQLAlchemy|Authentication|HTML / CSS">
-          <span class="code" style="align-self:flex-start">CEV</span>
-          <h3>Campus Events</h3>
-          <p>Deployed platform where students find events and RSVP, and clubs create events and track attendance.</p>
-          <ul class="bul">
-            <li data-lens="data">Designed a relational <strong>MySQL</strong> schema with <strong>SQLAlchemy</strong> models for users, clubs, events, rooms and RSVPs.</li>
-            <li data-lens="product">Used <strong>transactions and row-level locking</strong> so two users can never claim the last seat; added role-based auth and room-conflict checks.</li>
-          </ul>
-          <div class="chips"></div>
-          <div class="foot"><a class="btn small" href="https://github.com/saakshhh/CS348_CampusEventSystem" target="_blank" rel="noopener">View on GitHub ↗</a></div>
-        </article>
-      </div>
-    </section>
-
-    <!-- ============ TELEMETRY / SKILLS ============ -->
-    <section id="telemetry" aria-labelledby="h-tele">
-      <div class="sec-head">
-        <p class="eyebrow">Telemetry</p>
-        <h2 id="h-tele">Every <em>skill</em>, traced</h2>
-        <p>Each skill is listed with the exact roles and projects where I used it. Select a lit square to jump to that work.</p>
-      </div>
-      <div class="tele-controls">
-        <span class="eyebrow" id="teleCount"></span>
-        <button class="btn small" type="button" id="teleMore" aria-expanded="false">Show all skills</button>
-      </div>
-      <div class="tele-wrap"><table class="tele" id="teleTable"></table></div>
-    </section>
-
-    <!-- ============ PADDOCK / POSTERS ============ -->
-    <section id="paddock" aria-labelledby="h-paddock">
-      <div class="sec-head">
-        <p class="eyebrow">The paddock</p>
-        <h2 id="h-paddock">Research <em>posters</em></h2>
-        <p>Posters from my Data Mine projects. Select one to view it full size.</p>
-      </div>
-      <!-- To add a poster: export it as a JPG or PNG and save it in the posters/ folder with the file name below. It appears automatically. -->
-      <div class="posters">
-        <figure class="poster" style="margin:0">
-          <button class="frame" type="button" data-title="Bayer · Maize yield prediction"><img src="posters/bayer.jpg" alt="Bayer research poster: maize yield prediction" loading="lazy"><span class="cover"><span class="tag">Under covers</span><span class="big">BAY</span><span class="tag">2023 – 24</span></span></button>
-          <figcaption class="cap"><b>Maize yield prediction</b><span>Bayer · XGBoost, Random Forest</span></figcaption>
-        </figure>
-        <figure class="poster" style="margin:0">
-          <button class="frame" type="button" data-title="Purdue Athletics · Total Score of Athleticism"><img src="posters/athletics.jpg" alt="Purdue Athletics research poster: athleticism index and injury risk" loading="lazy"><span class="cover"><span class="tag">Under covers</span><span class="big">ATH</span><span class="tag">2024 – 25</span></span></button>
-          <figcaption class="cap"><b>Total Score of Athleticism</b><span>Purdue Athletics · SQL, Python, BI</span></figcaption>
-        </figure>
-        <figure class="poster" style="margin:0">
-          <button class="frame" type="button" data-title="Prediction Guard · Private AI support agent"><img src="posters/prediction-guard.jpg" alt="Prediction Guard research poster: private AI customer-support agent" loading="lazy"><span class="cover"><span class="tag">Under covers</span><span class="big">PGD</span><span class="tag">Fall 2025</span></span></button>
-          <figcaption class="cap"><b>Private AI support agent</b><span>Prediction Guard · RAG, LLMs</span></figcaption>
-        </figure>
-        <figure class="poster" style="margin:0">
-          <button class="frame" type="button" data-title="BASF · Grower segmentation"><img src="posters/basf.jpg" alt="BASF research poster: grower segmentation" loading="lazy"><span class="cover"><span class="tag">Under covers</span><span class="big">BSF</span><span class="tag">Spring 2026</span></span></button>
-          <figcaption class="cap"><b>Grower segmentation</b><span>BASF · Python, Tableau</span></figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- ============ RADIO / CONTACT ============ -->
-    <section id="radio" aria-labelledby="h-radio">
-      <div class="radio carbon-bg">
+    <section class="hero">
+      <div class="container hero-grid">
         <div>
-          <p class="eyebrow" style="margin:0 0 12px">Team radio</p>
-          <h2 id="h-radio" class="quote">Box, box. <span>Let's talk.</span></h2>
-          <p style="color:var(--muted);margin:14px 0 0;max-width:46ch">Looking for new-grad roles in applied AI, data and analytics, and product, starting 2027.</p>
+          <div class="eyebrow">Computer Science Student at Purdue University</div>
+          <h1>Building at the <em>intersection</em> of product, data, and AI.</h1>
+          <p>
+            I'm Saksham Singh, a Computer Science student with experience in product management, analytics, machine learning, and AI-powered applications.
+            I enjoy turning complex data into clear decisions and building tools that solve real business problems.
+          </p>
+          <div class="button-row">
+            <a class="btn btn-primary" href="#experience">View Experience</a>
+            <a class="btn btn-secondary" href="#contact">Contact Me</a>
+          </div>
         </div>
-        <div class="msgs">
-          <div class="channel"><div><div class="lab">Email</div><div class="val" id="emailVal">sakshh0107@gmail.com</div></div><button class="btn small" type="button" id="copyEmail">Copy</button></div>
-          <div class="channel"><div><div class="lab">LinkedIn</div><a class="val" href="https://www.linkedin.com/in/ssingh0107/" target="_blank" rel="noopener">linkedin.com/in/ssingh0107 ↗</a></div></div>
-          <div class="channel"><div><div class="lab">GitHub</div><a class="val" href="https://github.com/saakshhh" target="_blank" rel="noopener">github.com/saakshhh ↗</a></div></div>
+
+        <div class="hero-card">
+          <h3>What I work on</h3>
+          <ul>
+            <li>Product and project execution with Agile, Jira, and stakeholder collaboration</li>
+            <li>Dashboards and reporting with Tableau, Power BI, Excel, SQL, and Python</li>
+            <li>AI and machine learning projects across research, analytics, and application development</li>
+            <li>Turning technical findings into usable business recommendations</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <footer><span>© 2026 SAKSHAM SINGH</span><span>CHEQUERED FLAG · MAY 2027</span></footer>
+    <section id="about">
+      <div class="container">
+        <div class="section-divider">
+          <span class="section-number">// 01</span>
+          <h2 class="section-title">About</h2>
+        </div>
+        <p class="section-subtitle">
+          My background spans product, analytics, research, and AI development. I've worked with corporate partners, university teams, and research labs on projects involving dashboards, predictive modeling, workflow automation, and cross-functional execution.
+        </p>
+
+        <div class="about-grid">
+          <div class="card">
+            <h3>Education</h3>
+            <p><strong>Purdue University</strong></p>
+            <p>Bachelor of Science in Computer Science</p>
+            <p>August 2023 – May 2027</p>
+            <p>Certification: Entrepreneurship and Innovation, Application in Data Science</p>
+          </div>
+
+          <div class="card">
+            <h3>Core Skills</h3>
+            <ul class="skills-list">
+              <li>Product Lifecycle Management, Agile Methodology, Jira, User Stories, Data-Driven Prioritization</li>
+              <li>Python, SQL, R, Tableau, Power BI, Excel, scikit-learn</li>
+              <li>Generative AI, Agentic AI, AI-assisted development with Cursor, Claude, Gemini, and GitHub Copilot</li>
+              <li>Cross-functional leadership, KPI benchmarking, dashboard development, and technical communication</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-divider">
+          <span class="section-number">// 02</span>
+          <h2 class="section-title">Experience</h2>
+        </div>
+        <p class="section-subtitle">
+          A mix of product leadership, analytics, applied AI, and research roles across industry, university operations, and technical teams.
+        </p>
+
+        <div class="experience-list">
+
+            <div class="experience-item" data-sector="SECTOR 1">
+              <div class="experience-top">
+                <div>
+                  <h3>Data Analyst in Training</h3>
+                  <div class="company">Purdue Dining & Culinary</div>
+                  <div class="meta">West Lafayette, IN</div>
+                </div>
+                <div class="date">JUL 2025 – PRESENT</div>
+              </div>
+              <ul class="bullet-list">
+                <li>Manage data integrity by cleaning and structuring multi-source, unstructured datasets in Excel and developing validation frameworks for 1,200+ profiles across 9 locations.</li>
+                <li>Develop hiring reports and dashboards by transforming raw recruitment data into actionable insights that improve reporting accuracy and operational decision-making.</li>
+                <li>Support recruitment strategy by combining operational understanding with data-driven analysis to improve workforce planning and hiring processes.</li>
+              </ul>
+              <div class="tag-row">
+                <span class="tag">Data Analysis</span>
+                <span class="tag">Excel</span>
+                <span class="tag">Power BI</span>
+                <span class="tag">Data Cleaning</span>
+                <span class="tag">Data Validation</span>
+              </div>
+            </div>
+
+            <div class="experience-item" data-sector="SECTOR 1">
+              <div class="experience-top">
+                <div>
+                  <h3>Project Manager</h3>
+                  <div class="company">BASF · Data Mine Corporate Partners</div>
+                  <div class="meta">West Lafayette, IN</div>
+                </div>
+                <div class="date">JAN 2026 – APRIL 2026</div>
+              </div>
+              <ul class="bullet-list">
+                <li>Develop Tableau dashboards to synthesize complex datasets into actionable insights for both technical and non-technical stakeholders, driving data-informed business decisions and long-term process improvements.</li>
+                <li>Lead an Agile, Scrum-based team through sprint planning, weekly check-ins, retrospectives, task prioritization, and business-focused deliverables.</li>
+                <li>Leverage Jira to translate engineering and business goals into actionable user stories and a roadmap that improves operational efficiency.</li>
+                <li>Oversee the analysis of demographic, behavioral, geospatial, and publicly available agricultural data to support grower segmentation and strategy development.</li>
+              </ul>
+              <div class="tag-row">
+                <span class="tag">Tableau</span>
+                <span class="tag">Jira</span>
+                <span class="tag">Agile</span>
+                <span class="tag">Product Strategy</span>
+              </div>
+            </div>
+          
+          </div>
+
+          <div class="experience-item" data-sector="SECTOR 2">
+            <div class="experience-top">
+              <div>
+                <h3>Artificial Intelligence Researcher</h3>
+                <div class="company">Prediction Guard · Data Mine Corporate Partners</div>
+                <div class="meta">West Lafayette, IN</div>
+              </div>
+              <div class="date">AUG 2025 – DEC 2025</div>
+            </div>
+            <ul class="bullet-list">
+              <li>Directed the end-to-end build of a retail customer support AI agent using Cursor and Claude for AI-assisted development, transforming manual processes into scalable automated workflows.</li>
+              <li>Built secure integrations and supporting documentation to help business users adopt private AI tools in regulated environments without exposing confidential data.</li>
+              <li>Created deployment scripts, mitigation guides, setup instructions, and starter resources that enabled non-technical stakeholders to implement AI capabilities into business workflows efficiently.</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag">Generative AI</span>
+              <span class="tag">Claude</span>
+              <span class="tag">Cursor</span>
+              <span class="tag">Technical Documentation</span>
+            </div>
+          </div>
+
+          <div class="experience-item" data-sector="SECTOR 3">
+            <div class="experience-top">
+              <div>
+                <h3>Data Science Researcher</h3>
+                <div class="company">Purdue Athletics Strength & Conditioning · Data Mine Corporate Partners</div>
+                <div class="meta">West Lafayette, IN</div>
+              </div>
+              <div class="date">AUG 2024 – APR 2025</div>
+            </div>
+            <ul class="bullet-list">
+              <li>Synthesized datasets from Catapult and HitTrax using SQL and Python to develop a standardized athleticism index and identify high-risk injury signals for player development.</li>
+              <li>Developed 6+ Power BI and Tableau dashboards to track KPI trends and risk signals, accelerating data-driven decision-making by 10% and improving weekly operational performance.</li>
+              <li>Built interactive analytics tools and communicated technical findings to coaches, faculty, and corporate partners through presentations and dashboard-driven insights.</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag">SQL</span>
+              <span class="tag">Python</span>
+              <span class="tag">Power BI</span>
+              <span class="tag">Tableau</span>
+              <span class="tag">Sports Analytics</span>
+            </div>
+          </div>
+
+          <div class="experience-item" data-sector="SECTOR 3">
+            <div class="experience-top">
+              <div>
+                <h3>Undergraduate Data Scientist</h3>
+                <div class="company">Bayer · Data Mine Corporate Partners</div>
+                <div class="meta">West Lafayette, IN</div>
+              </div>
+              <div class="date">AUG 2023 – APR 2024</div>
+            </div>
+            <ul class="bullet-list">
+              <li>Spearheaded the development of predictive yield models using XGBoost and Random Forest, achieving 77% accuracy in maize outcomes and prioritizing high-impact research areas.</li>
+              <li>Engineered a scalable Python solution to integrate thousands of genetic and environmental markers, improving data quality and processing efficiency by 34%.</li>
+              <li>Identified key environmental drivers and created a more scalable, standardized data foundation for analysis.</li>
+              <li>Translated technical findings into strategic insights for agricultural research and presented project methodology, results, and business implications to diverse stakeholders.</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag">Machine Learning</span>
+              <span class="tag">Python</span>
+              <span class="tag">XGBoost</span>
+              <span class="tag">Random Forest</span>
+              <span class="tag">Data Cleaning</span>
+              <span class="tag">Agricultural Analytics</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-divider">
+          <span class="section-number">// 03</span>
+          <h2 class="section-title">Projects</h2>
+        </div>
+        <p class="section-subtitle">
+          Selected projects focused on AI, full-stack development, accessibility, and data-driven applications.
+        </p>
+
+        <div class="project-grid">
+          <div class="card">
+            <div class="project-title">Sentiment Analysis Platform</div>
+            <p style="color: var(--muted); margin-bottom: 12px; font-size:0.93rem;">
+              Built a full-stack market sentiment analysis platform that fetches financial news, applies FinBERT-based sentiment analysis, and visualizes daily sentiment trends through an interactive dashboard.
+            </p>
+            <ul class="bullet-list">
+              <li>Designed a workflow that helps users quickly understand whether media coverage around a public company has been trending positive, negative, or neutral.</li>
+              <li>Integrated a FastAPI backend with PostgreSQL and Docker to store and retrieve historical sentiment results efficiently.</li>
+              <li>Built a lightweight frontend using HTML, JavaScript, and Chart.js to display daily average sentiment in a clear, interactive format.</li>
+            </ul>
+            <div class="project-tools">
+              <strong>STACK //</strong> Python · FastAPI · PostgreSQL · Docker · Docker Compose · HTML · JavaScript · Chart.js · FinBERT · NewsAPI
+            </div>
+            <a class="project-link" href="https://github.com/saakshhh/sentiment-analysis-platform" target="_blank">View on GitHub</a>
+          </div>
+
+
+          <div class="card">
+            <div class="project-title">Campus Event Management System</div>
+            <p style="color: var(--muted); margin-bottom: 12px; font-size:0.93rem;">
+              Built and deployed a full-stack campus event platform that allows students to discover events, manage RSVPs, and submit feedback while enabling club administrators to create events and analyze attendance.
+            </p>
+            <ul class="bullet-list">
+              <li>Designed a relational MySQL database for users, clubs, events, locations, RSVPs, and feedback using foreign keys and SQLAlchemy models.</li>
+              <li>Implemented role-based authentication, event CRUD operations, room conflict detection, RSVP capacity enforcement, and reporting dashboards.</li>
+              <li>Used database transactions and row-level locking to prevent concurrent users from claiming the same final event seat.</li>
+            </ul>
+            <div class="project-tools">
+              <strong>STACK //</strong> Python · Flask · MySQL · SQLAlchemy · Flask-Login · HTML · CSS · Bootstrap · Railway · Gunicorn
+            </div>
+            <a class="project-link" href="https://github.com/saakshhh/CS348_CampusEventSystem" target="_blank">View on GitHub</a>
+          </div>
+
+          <div class="card">
+            <div class="project-title">AI-Nable / Snap Study</div>
+            <p style="color: var(--muted); margin-bottom: 12px; font-size:0.93rem;">
+              Helped build an AI-powered educational platform that transforms complex learning materials into more accessible, personalized experiences for neurodiverse students using multimodal AWS AI services.
+            </p>
+            <ul class="bullet-list">
+              <li>Worked on a system that converts uploaded educational documents into simplified text, audio narration, and interactive support for students with ADHD, dyslexia, and low literacy.</li>
+              <li>Connected a Flutter frontend with a FastAPI backend and AWS services to support document extraction, text simplification, and voice-based learning.</li>
+              <li>Contributed to a product designed around accessibility, personalization, and inclusive learning through text, audio, and visual support.</li>
+            </ul>
+            <div class="project-tools">
+              <strong>STACK //</strong> Flutter · FastAPI · AWS Textract · Amazon Bedrock · Amazon Polly · Amazon S3 · Python · Generative AI
+            </div>
+            <a class="project-link" href="https://github.com/saakshhh/AI-Nable" target="_blank">View on GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-divider">
+          <span class="section-number">// 04</span>
+          <h2 class="section-title">Contact</h2>
+        </div>
+        <p class="section-subtitle">
+          Feel free to reach out for project collaborations, or just to connect.
+        </p>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>Email</h3>
+            <a href="mailto:singhh.s0107@gmail.com">singhh.s0107@gmail.com</a>
+          </div>
+
+          <div class="contact-card">
+            <h3>GitHub</h3>
+            <a href="https://github.com/saakshhh" target="_blank">github.com/saakshhh</a>
+          </div>
+
+          <div class="contact-card">
+            <h3>LinkedIn</h3>
+            <a href="https://www.linkedin.com/in/ssingh0107/" target="_blank">linkedin.com/in/ssingh0107</a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
-</div>
 
-<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Poster viewer">
-  <div class="bar2"><span id="lbTitle"></span><button class="btn small" type="button" id="lbClose">Close ✕</button></div>
-  <img id="lbImg" alt="">
-</div>
-
-<script>
-(function(){
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var root = document.documentElement;
-
-  /* ---------- start lights ---------- */
-  var pods = Array.prototype.slice.call(document.querySelectorAll('.pod'));
-  var call = document.getElementById('lightsCall');
-  var timers = [];
-  function runLights(){
-    timers.forEach(clearTimeout); timers = [];
-    pods.forEach(function(p){p.classList.remove('on')});
-    if(reduce){ call.textContent = 'LIGHTS OUT'; return; }
-    call.textContent = 'FORMATION';
-    pods.forEach(function(p,i){ timers.push(setTimeout(function(){ p.classList.add('on'); call.textContent = (i+1)+' / 5'; }, 500 + i*650)); });
-    var hold = 500 + 4*650 + 700 + Math.random()*900;
-    timers.push(setTimeout(function(){ pods.forEach(function(p){p.classList.remove('on')}); call.textContent = 'LIGHTS OUT'; }, hold));
-  }
-  runLights();
-  document.getElementById('replay').addEventListener('click', runLights);
-
-  /* ---------- lap progress ---------- */
-  var lapbar = document.getElementById('lapbar');
-  function onScroll(){
-    var h = document.documentElement.scrollHeight - window.innerHeight;
-    lapbar.style.width = (h > 0 ? Math.min(100, window.scrollY / h * 100) : 0) + '%';
-  }
-  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
-
-  /* ---------- tower nav active state ---------- */
-  var navLinks = Array.prototype.slice.call(document.querySelectorAll('#towerNav a'));
-  var secs = navLinks.map(function(a){ return document.querySelector(a.getAttribute('href')); });
-  if('IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){
-          navLinks.forEach(function(a){ a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id); });
-        }
-      });
-    }, {rootMargin:'-40% 0px -55% 0px'});
-    secs.forEach(function(s){ if(s) io.observe(s); });
-  }
-  navLinks[0].classList.add('on');
-
-  /* ---------- skill chips from data-skills ---------- */
-  var LENS = {
-    'Python':'ai','XGBoost':'ai','Random Forest':'ai','scikit-learn':'ai','Feature Engineering':'ai','Generative AI':'ai','RAG':'ai','LLM Agents':'ai','Claude':'ai','Cursor':'ai','NLP':'ai','FinBERT':'ai','AWS Bedrock':'ai','AWS Textract':'ai','Amazon Polly':'ai',
-    'SQL':'data','Excel':'data','Power BI':'data','Tableau':'data','Dashboards':'data','Data Cleaning':'data','Data Validation':'data','Data Pipelines':'data','Customer Segmentation':'data','Geospatial Analysis':'data','Metric Design':'data','Anvil HPC':'data','PostgreSQL':'data','MySQL':'data','SQLAlchemy':'data','Chart.js':'data',
-    'Jira':'product','Agile / Scrum':'product','Product Roadmapping':'product','User Stories':'product','Technical Documentation':'product','Stakeholder Reporting':'product','Leadership':'product',
-    'Workforce Analytics':'ops',
-    'FastAPI':'eng','Flask':'eng','Flutter':'eng','Docker':'eng','JavaScript':'eng','HTML / CSS':'eng','Amazon S3':'eng','API Integration':'eng','Authentication':'eng'
-  };
-  var LENS_NAME = {ai:'AI & ML', data:'Data & BI', product:'Product & Program', ops:'Business & Operations', eng:'Engineering'};
-  var TYRE = {ai:'t-ai', data:'t-data', product:'t-product', ops:'t-ops', eng:''};
-  var TYRE_L = {ai:'S', data:'M', product:'H', ops:'I', eng:'E'};
-
-  var items = Array.prototype.slice.call(document.querySelectorAll('[data-skills]'));
-  items.forEach(function(el){
-    var box = el.querySelector('.chips');
-    el._skills = el.getAttribute('data-skills').split('|');
-    el._skills.forEach(function(s){
-      var c = document.createElement('span'); c.className = 'chip'; c.textContent = s; c.dataset.skill = s; box.appendChild(c);
-    });
-  });
-
-  /* ---------- telemetry table ---------- */
-  var table = document.getElementById('teleTable');
-  var showAll = false;
-  var cols = items.map(function(el){ return {id:el.id, code:el.querySelector('.code').textContent, name:(el.querySelector('h3')||{}).textContent, el:el}; });
-  var nRaces = document.querySelectorAll('.race').length;
-  var skills = {};
-  items.forEach(function(el){ el._skills.forEach(function(s){ (skills[s] = skills[s] || []).push(el.id); }); });
-  var skillList = Object.keys(skills).map(function(s){ return {name:s, ids:skills[s], lens:LENS[s]||'eng'}; });
-
-  function renderTele(){
-    var lens = root.getAttribute('data-lens') || 'all';
-    var list = skillList.slice().sort(function(a,b){
-      var ra = (lens!=='all' && a.lens===lens) ? 1 : 0, rb = (lens!=='all' && b.lens===lens) ? 1 : 0;
-      return (rb-ra) || (b.ids.length-a.ids.length) || a.name.localeCompare(b.name);
-    });
-    var visible = showAll ? list : list.filter(function(s){ return s.ids.length >= 2 || (lens!=='all' && s.lens===lens); });
-    var html = '<thead><tr><th class="sk">Skill</th>';
-    cols.forEach(function(c,i){ html += '<th' + (i===nRaces?' class="sep"':'') + ' title="'+c.name+'"><a href="#'+c.id+'">'+c.code+'</a></th>'; });
-    html += '<th>Uses</th></tr></thead><tbody>';
-    visible.forEach(function(s){
-      html += '<tr><th class="sk" scope="row"><span class="skn"><span class="tyre '+TYRE[s.lens]+'" title="'+LENS_NAME[s.lens]+'">'+TYRE_L[s.lens]+'</span>'+s.name+'</span></th>';
-      cols.forEach(function(c,i){
-        var y = s.ids.indexOf(c.id) > -1;
-        html += '<td' + (i===nRaces?' class="sep"':'') + '>' + (y ? '<a class="pipl" href="#'+c.id+'" data-skill="'+s.name+'" aria-label="'+s.name+' at '+c.name+'"><span class="pip y"></span></a>' : '<span class="pip" aria-hidden="true"></span>') + '</td>';
-      });
-      html += '<td class="n">'+s.ids.length+'</td></tr>';
-    });
-    html += '</tbody>';
-    table.innerHTML = html;
-    document.getElementById('teleCount').textContent = visible.length + ' of ' + skillList.length + ' skills · ' + cols.length + ' roles and projects';
-    document.getElementById('teleMore').textContent = showAll ? 'Show core skills' : 'Show all ' + skillList.length + ' skills';
-  }
-  document.getElementById('teleMore').addEventListener('click', function(){
-    showAll = !showAll; this.setAttribute('aria-expanded', String(showAll)); renderTele();
-  });
-  table.addEventListener('click', function(e){
-    var a = e.target.closest('a.pipl'); if(!a) return;
-    var target = document.getElementById(a.getAttribute('href').slice(1));
-    var sk = a.getAttribute('data-skill');
-    document.querySelectorAll('.chip.hit').forEach(function(c){ c.classList.remove('hit'); });
-    target.querySelectorAll('.chip').forEach(function(c){ if(c.dataset.skill === sk) c.classList.add('hit'); });
-    flash(target);
-  });
-
-  function flash(el){
-    el.classList.add('flash'); setTimeout(function(){ el.classList.remove('flash'); }, 1600);
-  }
-
-  /* ---------- season chart ---------- */
-  // timeline runs Aug 2023 (0) to end of May 2027 (45 months)
-  var now = new Date();
-  var months = (now.getFullYear()-2023)*12 + (now.getMonth()-7) + now.getDate()/31;
-  var pct = Math.max(0, Math.min(100, months/45*100));
-  var nowLine = document.getElementById('nowLine');
-  function placeNow(){
-    var track = document.querySelector('.s-track'); var chart = document.getElementById('seasonChart');
-    var tr = track.getBoundingClientRect(), cr = chart.getBoundingClientRect();
-    nowLine.style.left = (tr.left - cr.left + tr.width*pct/100) + 'px';
-  }
-  placeNow(); window.addEventListener('resize', placeNow);
-  document.querySelectorAll('.stint[data-go]').forEach(function(b){
-    b.addEventListener('click', function(){
-      var t = document.getElementById(b.dataset.go);
-      t.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'start'}); flash(t);
-    });
-  });
-
-  /* ---------- setup lens ---------- */
-  var NOTES = {
-    all:'Showing the full record. Soft for AI & ML, medium for data and BI, hard for product and program work, intermediate for business and operations.',
-    ai:'Soft compound: machine learning, LLMs and AI tooling. Matching bullets stay bright and the most relevant work moves up.',
-    data:'Medium compound: analytics, SQL, dashboards and data pipelines. Matching bullets stay bright and the most relevant work moves up.',
-    product:'Hard compound: leading teams, roadmaps, stakeholder work. Matching bullets stay bright and the most relevant work moves up.',
-    ops:'Intermediate compound: business and operations analytics. Matching bullets stay bright and the most relevant work moves up.'
-  };
-  var raceList = document.getElementById('raceList');
-  var buildList = document.getElementById('buildList');
-  var sortNote = document.getElementById('sortNote');
-  var btns = Array.prototype.slice.call(document.querySelectorAll('.tyre-btn'));
-  var linkCode = document.getElementById('setupLink');
-  var base = (location.protocol.indexOf('http') === 0 && /github\.io$/.test(location.hostname)) ? (location.host + location.pathname) : 'saakshhh.github.io/';
-
-  function score(card, lens){
-    var n = 0; card.querySelectorAll('.bul li').forEach(function(li){ if((' '+li.getAttribute('data-lens')+' ').indexOf(' '+lens+' ') > -1) n++; }); return n;
-  }
-  function applyLens(lens, fromUser){
-    if(!NOTES[lens]) lens = 'all';
-    root.setAttribute('data-lens', lens);
-    btns.forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.set === lens)); });
-    document.getElementById('setupNote').textContent = NOTES[lens];
-    document.querySelectorAll('.bul li').forEach(function(li){
-      li.classList.toggle('off', lens !== 'all' && (' '+li.getAttribute('data-lens')+' ').indexOf(' '+lens+' ') === -1);
-    });
-    [raceList, buildList].forEach(function(list){
-      var cards = Array.prototype.slice.call(list.children);
-      cards.forEach(function(c, i){
-        if(c.dataset.order === undefined) c.dataset.order = i;
-        var s = lens === 'all' ? 0 : score(c, lens);
-        c.classList.toggle('cold', lens !== 'all' && s === 0);
-        c._s = s;
-      });
-      cards.sort(function(a,b){ return (lens==='all' ? 0 : b._s - a._s) || (a.dataset.order - b.dataset.order); });
-      cards.forEach(function(c){ list.appendChild(c); });
-    });
-    sortNote.hidden = lens === 'all';
-    sortNote.textContent = lens === 'all' ? '' : '▲ Sorted by relevance to ' + LENS_NAME[lens] + '. Switch to Full record for date order.';
-    linkCode.textContent = base + (lens === 'all' ? '' : '#' + lens);
-    renderTele();
-    if(fromUser){ try{ history.replaceState(null, '', lens === 'all' ? location.pathname + location.search : '#' + lens); }catch(e){} }
-  }
-  btns.forEach(function(b){ b.addEventListener('click', function(){ applyLens(b.dataset.set, true); }); });
-  var startLens = (location.hash || '').slice(1);
-  applyLens(NOTES[startLens] ? startLens : 'all', false);
-  if(NOTES[startLens] && startLens !== 'all'){ setTimeout(function(){ document.getElementById('setup').scrollIntoView(); }, 50); }
-  window.addEventListener('hashchange', function(){ var h = location.hash.slice(1); if(NOTES[h]) applyLens(h, false); });
-
-  /* ---------- copy helpers ---------- */
-  function copy(text, btn, el){
-    var done = function(){ var t = btn.textContent; btn.textContent = 'Copied'; setTimeout(function(){ btn.textContent = t; }, 1400); };
-    var fallback = function(){ var r = document.createRange(); r.selectNodeContents(el); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Press ⌘/Ctrl+C'; setTimeout(function(){ btn.textContent = 'Copy'; }, 2000); };
-    try{ navigator.clipboard.writeText(text).then(done, fallback); }catch(e){ fallback(); }
-  }
-  document.getElementById('copyLink').addEventListener('click', function(){ copy('https://' + linkCode.textContent, this, linkCode); });
-  document.getElementById('copyEmail').addEventListener('click', function(){ var v = document.getElementById('emailVal'); copy(v.textContent, this, v); });
-
-  /* ---------- posters ---------- */
-  var lb = document.getElementById('lightbox'), lbImg = document.getElementById('lbImg'), lbTitle = document.getElementById('lbTitle');
-  document.querySelectorAll('.poster .frame').forEach(function(f){
-    var img = f.querySelector('img'), cover = f.querySelector('.cover');
-    function ready(){ cover.hidden = true; f.dataset.ready = '1'; }
-    function missing(){ img.hidden = true; cover.hidden = false; f.dataset.ready = ''; f.setAttribute('aria-disabled','true'); }
-    if(img.complete && img.naturalWidth) ready(); else if(img.complete) missing();
-    img.addEventListener('load', ready); img.addEventListener('error', missing);
-    f.addEventListener('click', function(){
-      if(!f.dataset.ready) return;
-      lbImg.src = img.src; lbImg.alt = img.alt; lbTitle.textContent = f.dataset.title; lb.hidden = false; document.getElementById('lbClose').focus(); f._open = true; lb._from = f;
-    });
-  });
-  function closeLb(){ lb.hidden = true; lbImg.removeAttribute('src'); if(lb._from) lb._from.focus(); }
-  document.getElementById('lbClose').addEventListener('click', closeLb);
-  lb.addEventListener('click', function(e){ if(e.target === lb) closeLb(); });
-  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && !lb.hidden) closeLb(); });
-})();
-</script>
-
+  <footer>
+    <div class="container">
+      <p>© 2026 SAKSHAM SINGH · ALL SYSTEMS GO</p>
+    </div>
+  </footer>
 </body>
 </html>
