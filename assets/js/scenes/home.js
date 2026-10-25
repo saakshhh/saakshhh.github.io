@@ -66,7 +66,7 @@ if (stage) {
   stage.onResize = (s) => {
     // shift the projection so the car sits right of the headline on wide screens, above it on phones
     if (s.narrow) { camDist = 25; camH = 4.2; lookOffset.set(0, 0, 0); camera.fov = 30; camera.setViewOffset(s.width, s.height, 0, s.height * 0.2, s.width, s.height); }
-    else { camDist = s.width < 1100 ? 17 : 15; camH = 2.1; lookOffset.set(0, 0, 0); camera.fov = 26; camera.setViewOffset(s.width, s.height, -s.width * 0.19, s.height * 0.02, s.width, s.height); }
+    else { camDist = s.width < 1100 ? 22 : s.width < 1600 ? 19 : 16; camH = 2.4; lookOffset.set(0, 0, 0); camera.fov = 26; camera.setViewOffset(s.width, s.height, -s.width * (s.width < 1600 ? 0.25 : 0.2), s.height * 0.02, s.width, s.height); }
   };
 
   stage.onFrame = (dt, t) => {

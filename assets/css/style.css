@@ -447,3 +447,10 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
 .contact-stage .contact { pointer-events: auto; }
 .contact-stage::after { background: linear-gradient(0deg, var(--ink) 0%, rgba(14,15,36,0) 40%); }
 @media (max-width: 760px) { .stage.short { min-height: 74svh; } }
+
+/* Home hero: pin the copy to the left edge and keep the name clear of the car */
+@media (min-width: 761px) {
+  .page-index .stage > .wrap { width: auto; margin: 0 0 0 clamp(24px, 5.5vw, 112px); }
+  .page-index .stage-copy { max-width: min(680px, 46vw); }
+  .page-index .hero-name { font-size: clamp(3.2rem, 7vw, 8.25rem); }
+}
