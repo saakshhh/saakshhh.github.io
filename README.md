@@ -4,9 +4,6 @@
 
 A five-page personal portfolio featuring interactive 3D visualizations, projects, research, and professional experience.
 
-
-A five-page static portfolio made from the original single-page HTML file. Designed around the original night-racing theme, with separate interactive Three.js visualizations on each page.
-
 ## Pages
 
 - `index.html`: Welcome page. Retains the original rotating 3D racetrack scene and animated tool marquee.
