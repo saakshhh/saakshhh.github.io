@@ -2,42 +2,44 @@
 
 🌐 **Live Website:** [https://saakshhh.github.io/](https://saakshhh.github.io/)
 
-A five-page personal portfolio featuring interactive 3D visualizations, projects, research, and professional experience.
+A five-page personal portfolio. Each page opens on its own real-time, physically based 3D Formula 1 scene built with Three.js.
 
 ## Pages
 
-- `index.html`: Welcome page. Retains the original rotating 3D racetrack scene and animated tool marquee.
-- `about.html`: Original Purdue education, background, and complete skill groups; 3D network sculpture.
-- `experience.html`: All five original experience entries, dates, achievements, tools, and original research poster/publication links; expandable role cards and 3D career trajectory.
-- `projects.html`: All four original projects, descriptions, bullet details, tools, and GitHub URLs; expandable project breakdowns, hover-tilting cards and 3D floating project sculptures.
-- `contact.html`: Email, copy button, LinkedIn and GitHub; 3D signal beacon.
+| Page | Content | 3D scene |
+| --- | --- | --- |
+| `index.html` | Intro, tools marquee, links to every page | Studio shot of a detailed F1 car on a polished floor; drag to spin it |
+| `about.html` | Background, education, skill groups | F1 steering wheel with live shift lights and dash; it steers with your cursor |
+| `experience.html` | All five roles, achievements, tools, research links | Floodlit night circuit; the car laps with a broadcast-style camera and throws sparks on the straights |
+| `projects.html` | All four projects with details and GitHub links | Exploded front corner (tyre, glowing carbon brake disc, caliper, duct, upright) |
+| `contact.html` | Email, copy button, LinkedIn, GitHub | Start-lights gantry: five lights, lights out, the car launches. Click to rerun |
+
+## Structure
+
+```
+assets/
+  css/style.css        shared styles (night-race palette, layout, responsive rules)
+  js/site.js           mobile menu, project-card tilt, copy email
+  js/engine.js         renderer, tone mapping, bloom, environment lighting, render loop
+  js/car.js            procedural F1 car (bodywork lofts, wings, halo, wheels, suspension)
+  js/scenes/*.js       one scene per page
+  vendor/              Three.js r160 (MIT), served locally so the site has no runtime CDN dependency
+```
 
 ## Run locally
 
-Open `index.html` in a modern browser with internet access. You can also run a static server from this directory:
+ES modules need a web server (opening the file directly will not load the 3D):
 
 ```bash
 python3 -m http.server 8000
 ```
 
-Then open http://localhost:8000.
+Then open http://localhost:8000. Add `?still` to a URL to render a single frame without animating (handy for screenshots).
 
-No Node.js build, React, or framework is needed. The website uses relative file links to work when hosted in a GitHub Pages repository or project subdirectory.
+## Notes
 
-## Publish to GitHub Pages
-
-1. Copy **the contents of this folder** into the root of the repository used for your website. Do not place `index.html` one directory too deep.
-2. Commit and push to your GitHub repository.
-3. Open the repository's **Settings → Pages**.
-4. Choose **Deploy from a branch**, your intended branch (usually `main`), and the **`/(root)`** folder.
-5. Visit the URL GitHub Pages provides.
-
-## Edit the site
-
-- Update text, project links, or dates in the relevant `.html` page.
-- Update colors and layout in `assets/style.css`.
-- Adjust 3D sculptures in `assets/scenes.js`.
-- Adjust the original home racetrack in `assets/track.js`.
-- General navigation, experience expansion, 3D hover tilt, and email copying live in `assets/site.js`.
-
-The site loads the same Three.js r128 CDN version as the original file, along with Google Fonts. Internet access is needed to load those resources. The site remains navigable if 3D graphics are unsupported; decorative fallback shapes and all page content remain available. Animations pause when the relevant content is out of view, and the layout respects reduced-motion settings.
+- No build step or framework; GitHub Pages serves the files as-is.
+- The render loop pauses when a scene is off-screen or the tab is hidden, and drops resolution automatically on slow devices.
+- With "reduce motion" enabled, scenes render a single still frame and page animations are disabled.
+- If WebGL is unavailable, pages fall back to a gradient background and all content remains available.
+- Page-to-page navigation uses cross-document view transitions where the browser supports them.

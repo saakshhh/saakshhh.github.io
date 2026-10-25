@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects | Saksham Singh</title>
+  <meta name="description" content="Selected projects in AI, human-centered design, full-stack development, accessibility, and data-driven applications." />
+  <meta name="theme-color" content="#0e0f24" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800;900&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="modulepreload" href="assets/vendor/three.module.min.js" />
+  <script type="importmap">{ "imports": { "three": "./assets/vendor/three.module.min.js" } }</script>
+</head>
+<body class="page-projects">
+  <a class="skip" href="#content">Skip to content</a>
+  <nav class="nav" aria-label="Main">
+    <a class="brand" href="index.html">Saksham Singh</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav-links"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg><span>Menu</span></button>
+    <ul id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="projects.html" aria-current="page">Projects</a></li>
+      <li><a class="cta" href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="stage short" data-scene aria-label="Projects">
+      <canvas aria-hidden="true"></canvas>
+      <div class="wrap">
+        <div class="stage-copy">
+          <h1 class="page-title">Projects</h1>
+          <p class="intro">Selected projects focused on AI, human-centered design, full-stack development, accessibility, and data-driven applications.</p>
+        </div>
+      </div>
+      <div class="drag-hint" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M4 12l4-4M4 12l4 4M20 12l-4-4M20 12l-4 4"/></svg>
+        Drag to turn the wheel
+      </div>
+    </section>
+
+    <section id="content" class="section">
+      <div class="wrap">
+        <div class="projects">
+          <article class="project" data-tilt>
+            <span class="status">In progress</span>
+            <div class="num" aria-hidden="true">01</div>
+            <h3>BoilerPark</h3>
+            <p class="desc">Availability-aware parking guidance for Purdue commuters. A CS 475 Human-Computer Interaction team project helping students, faculty, and staff find open, permit-eligible parking near their destination without circling lots or risking citations.</p>
+            <ul class="points">
+              <li>Ran semi-structured needfinding interviews in a 10-participant study (8 students, 2 staff) covering commuting routines, permit confusion, event-day disruptions, and trust in estimated availability.</li>
+              <li>Synthesized 126 interview notes into an affinity diagram of 7 themes and 21 subthemes, finding that drivers value availability over proximity, want 1–3 backup lots, and need to see how fresh the data is.</li>
+              <li>Built personas, storyboards, and user flows, then a 9-screen paper prototype covering 4 core tasks: permit-aware recommendations, game-day restriction alerts, rules lookup linked to official Purdue sources, and one-tap rerouting when a lot is full.</li>
+            </ul>
+            <p class="note">Five-person team. Next: interactive digital prototype, cognitive walkthrough, and usability testing.</p>
+            <ul class="chips"><li>UX Research</li><li>User Interviews</li><li>Affinity Diagramming</li><li>Personas</li><li>Storyboarding</li><li>User Flows</li><li>Wireframing</li><li>Paper Prototyping</li></ul>
+          </article>
+
+          <article class="project" data-tilt>
+            <div class="num" aria-hidden="true">02</div>
+            <h3>Sentiment Analysis Platform</h3>
+            <p class="desc">A full-stack market sentiment platform that fetches financial news, applies FinBERT-based sentiment analysis, and visualizes daily sentiment trends through an interactive dashboard.</p>
+            <ul class="points">
+              <li>Helps users quickly see whether media coverage of a public company has been trending positive, negative, or neutral.</li>
+              <li>FastAPI backend with PostgreSQL and Docker to store and retrieve historical sentiment results efficiently.</li>
+              <li>Lightweight HTML, JavaScript, and Chart.js frontend showing daily average sentiment.</li>
+            </ul>
+            <ul class="chips"><li>Python</li><li>FastAPI</li><li>PostgreSQL</li><li>Docker</li><li>Chart.js</li><li>FinBERT</li><li>NewsAPI</li></ul>
+            <a class="btn btn-ghost" href="https://github.com/saakshhh/sentiment-analysis-platform" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg>
+              View on GitHub
+            </a>
+          </article>
+
+          <article class="project" data-tilt>
+            <div class="num" aria-hidden="true">03</div>
+            <h3>Campus Event Management System</h3>
+            <p class="desc">A deployed full-stack campus event platform where students discover events, manage RSVPs, and leave feedback, while club admins create events and analyze attendance.</p>
+            <ul class="points">
+              <li>Relational MySQL schema for users, clubs, events, locations, RSVPs, and feedback using foreign keys and SQLAlchemy models.</li>
+              <li>Role-based authentication, event CRUD, room conflict detection, RSVP capacity enforcement, and reporting dashboards.</li>
+              <li>Database transactions and row-level locking stop concurrent users from claiming the same final seat.</li>
+            </ul>
+            <ul class="chips"><li>Python</li><li>Flask</li><li>MySQL</li><li>SQLAlchemy</li><li>Bootstrap</li><li>Railway</li><li>Gunicorn</li></ul>
+            <a class="btn btn-ghost" href="https://github.com/saakshhh/CS348_CampusEventSystem" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg>
+              View on GitHub
+            </a>
+          </article>
+
+          <article class="project" data-tilt>
+            <div class="num" aria-hidden="true">04</div>
+            <h3>AI-Nable / Snap Study</h3>
+            <p class="desc">An AI-powered learning platform that turns complex materials into accessible, personalized experiences for neurodiverse students using multimodal AWS AI services.</p>
+            <ul class="points">
+              <li>Converts uploaded documents into simplified text, audio narration, and interactive support for students with ADHD, dyslexia, and low literacy.</li>
+              <li>Flutter frontend connected to a FastAPI backend and AWS services for extraction, simplification, and voice-based learning.</li>
+              <li>Designed around accessibility, personalization, and inclusive learning through text, audio, and visuals.</li>
+            </ul>
+            <ul class="chips"><li>Flutter</li><li>FastAPI</li><li>AWS Textract</li><li>Amazon Bedrock</li><li>Amazon Polly</li><li>Amazon S3</li></ul>
+            <a class="btn btn-ghost" href="https://github.com/saakshhh/AI-Nable" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg>
+              View on GitHub
+            </a>
+          </article>
+        </div>
+
+      </div>
+    </section>
+    <nav class="next" aria-label="Next page">
+      <div class="wrap">
+        <a href="contact.html">
+          <span><span class="label">Up next</span><br><span class="to">Contact</span></span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </nav>
+  </main>
+
+  <footer>
+    <div class="flag" aria-hidden="true"></div>
+    <div class="wrap">
+      <span>&copy; 2026 Saksham Singh</span>
+      <span>Built with Three.js and hosted on GitHub Pages</span>
+    </div>
+  </footer>
+
+  <script src="assets/js/site.js" defer></script>
+  <script type="module" src="assets/js/scenes/projects.js"></script>
+</body>
+</html>

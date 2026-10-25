@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Saksham Singh</title>
+  <meta name="description" content="Contact Saksham Singh by email, LinkedIn, or GitHub." />
+  <meta name="theme-color" content="#0e0f24" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800;900&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="modulepreload" href="assets/vendor/three.module.min.js" />
+  <script type="importmap">{ "imports": { "three": "./assets/vendor/three.module.min.js" } }</script>
+</head>
+<body class="page-contact">
+  <a class="skip" href="#content">Skip to content</a>
+  <nav class="nav" aria-label="Main">
+    <a class="brand" href="index.html">Saksham Singh</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav-links"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg><span>Menu</span></button>
+    <ul id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a class="cta" href="contact.html" aria-current="page">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="stage contact-stage" data-scene aria-label="Contact">
+      <canvas aria-hidden="true"></canvas>
+      <div class="wrap">
+        <div class="stage-copy">
+          <div class="contact" id="content">
+            <h1>Let's talk.</h1>
+            <p>Reach out about roles, project collaborations, or just to connect. I usually reply within a day.</p>
+            <div class="email-row">
+              <a class="email" href="mailto:singhh.s0107@gmail.com">singhh.s0107@gmail.com</a>
+              <button class="btn copy" type="button" data-copy="singhh.s0107@gmail.com">Copy email</button>
+            </div>
+            <div class="socials">
+              <a href="https://www.linkedin.com/in/ssingh0107/" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2ZM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2ZM7.1 20.5H3.5V9h3.6v11.5ZM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0Z"/></svg>
+                LinkedIn
+              </a>
+              <a href="https://github.com/saakshhh" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="drag-hint" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M4 12l4-4M4 12l4 4M20 12l-4-4M20 12l-4 4"/></svg>
+        Click to restart the lights
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="flag" aria-hidden="true"></div>
+    <div class="wrap">
+      <span>&copy; 2026 Saksham Singh</span>
+      <span>Built with Three.js and hosted on GitHub Pages</span>
+    </div>
+  </footer>
+
+  <script src="assets/js/site.js" defer></script>
+  <script type="module" src="assets/js/scenes/contact.js"></script>
+</body>
+</html>
