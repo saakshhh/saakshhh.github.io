@@ -1,66 +1,41 @@
-# Saksham Singh Portfolio Website
+# Saksham Singh | Multi-page Portfolio
 
-This repository contains my personal portfolio website, designed with a Formula 1 inspired aesthetic and deployed using GitHub Pages.
+A five-page static portfolio made from the original single-page HTML file. Designed around the original night-racing theme, with separate interactive Three.js visualizations on each page.
 
-## Live Site
-[https://saakshhh.github.io](https://saakshhh.github.io)
+## Pages
 
-## About
-This website showcases my background as a Computer Science student at Purdue University with experience across:
+- `index.html`: Welcome page. Retains the original rotating 3D racetrack scene and animated tool marquee.
+- `about.html`: Original Purdue education, background, and complete skill groups; 3D network sculpture.
+- `experience.html`: All five original experience entries, dates, achievements, tools, and original research poster/publication links; expandable role cards and 3D career trajectory.
+- `projects.html`: All four original projects, descriptions, bullet details, tools, and GitHub URLs; expandable project breakdowns, hover-tilting cards and 3D floating project sculptures.
+- `contact.html`: Email, copy button, LinkedIn and GitHub; 3D signal beacon.
 
-- Product management
-- Data analytics
-- Artificial intelligence
-- Machine learning
-- Full-stack development
-- Research and dashboarding
+## Run locally
 
-The site highlights my education, experience, selected projects, and contact information in a clean and modern portfolio design.
+Open `index.html` in a modern browser with internet access. You can also run a static server from this directory:
 
-## Design Theme
-The website uses a Formula 1 inspired aesthetic with:
-
-- dark racing-style interface
-- red accent colors
-- sharp card layouts
-- premium typography
-- subtle track-inspired visual elements
-- clean, high-contrast sections focused on readability
-
-## Sections
-The website currently includes:
-
-- Hero – quick introduction and focus areas
-- About – education and core skills
-- Experience – professional, research, and analytics roles
-- Projects – selected technical projects
-- Contact – email, GitHub, and LinkedIn
-
-## Featured Projects
-
-### Sentiment Analysis Platform
-A full-stack market sentiment analysis platform that fetches financial news, applies FinBERT-based sentiment analysis, and visualizes daily sentiment trends through an interactive dashboard.
-
-**Tech Stack:**  
-Python, FastAPI, PostgreSQL, Docker, Docker Compose, HTML, JavaScript, Chart.js, FinBERT, NewsAPI
-
-### AI-Nable / Snap Study
-An AI-powered educational platform that transforms complex learning materials into more accessible, personalized experiences for neurodiverse students using multimodal AWS AI services.
-
-**Tech Stack:**  
-Flutter, FastAPI, AWS Textract, Amazon Bedrock, Amazon Polly, Amazon S3, Python, Generative AI
-
-## Tech Used
-- HTML5
-- CSS3
-- Google Fonts
-- GitHub Pages
-
-## Deployment
-This site is deployed through GitHub Pages from the `main` branch.
-
-## Repository Structure
 ```bash
-.
-├── index.html
-└── README.md
+python3 -m http.server 8000
+```
+
+Then open http://localhost:8000.
+
+No Node.js build, React, or framework is needed. The website uses relative file links to work when hosted in a GitHub Pages repository or project subdirectory.
+
+## Publish to GitHub Pages
+
+1. Copy **the contents of this folder** into the root of the repository used for your website. Do not place `index.html` one directory too deep.
+2. Commit and push to your GitHub repository.
+3. Open the repository's **Settings → Pages**.
+4. Choose **Deploy from a branch**, your intended branch (usually `main`), and the **`/(root)`** folder.
+5. Visit the URL GitHub Pages provides.
+
+## Edit the site
+
+- Update text, project links, or dates in the relevant `.html` page.
+- Update colors and layout in `assets/style.css`.
+- Adjust 3D sculptures in `assets/scenes.js`.
+- Adjust the original home racetrack in `assets/track.js`.
+- General navigation, experience expansion, 3D hover tilt, and email copying live in `assets/site.js`.
+
+The site loads the same Three.js r128 CDN version as the original file, along with Google Fonts. Internet access is needed to load those resources. The site remains navigable if 3D graphics are unsupported; decorative fallback shapes and all page content remain available. Animations pause when the relevant content is out of view, and the layout respects reduced-motion settings.
