@@ -1,12 +1,15 @@
 # Beyond Reshoring: References and Figure Notes
 
+**[Open the formatted references page](https://saakshhh.github.io/research/semiconductor-resilience-poster-references.html)**  
+*For a cleaner reading experience on your phone, including the chart data, source notes, and full bibliography.*
+
 **The Role of AI and Predictive Analytics in Semiconductor Supply Chain Resilience**
 
 **Researcher:** Saksham Singh, Purdue University, Department of Computer Science  
 **Faculty mentor:** Harris J. Bras  
 **Presentation:** Purdue Fall Undergraduate Research Expo, November 17, 2026
 
-This page supplies the complete citations, source links, and numerical definitions for the research poster. It is a literature review and comparative synthesis, **not** an original causal experiment. Forecasts and network simulations are labeled separately from observed facts.
+I kept the full references and chart details here so there would be more room on the printed poster. This page explains where the figures came from and lists the publications I used. The project compares published research; it does not report my own trade-network simulation or AI experiment.
 
 ## Visual 1: U.S. manufacturing capacity (industry forecasts)
 
@@ -29,9 +32,9 @@ Li et al. (2025), Table 6, examine a CEPII-based **2021 trade network** and repo
 | Equipment | 48 | 33 | 6 | 68.8% | 12.5% |
 | Finished components | 96 | 67 | 9 | 69.8% | 9.4% |
 
-*Percentages shown in the poster were calculated as nodes removed divided by total nodes, rounded to whole percentages. Targeted removal follows highest strength-centrality nodes. These simulated network results do **not** measure actual future losses or give a probability of real-world disruption.* Source: Li et al. (2025), [full paper and Table 6](https://pmc.ncbi.nlm.nih.gov/articles/PMC11717270/).
+*Percentages shown in the poster were calculated as nodes removed divided by total nodes, rounded to one decimal place. Targeted removal follows highest strength-centrality nodes. These simulated network results do **not** measure actual future losses or give a probability of real-world disruption.* Source: Li et al. (2025), [full paper and Table 6](https://pmc.ncbi.nlm.nih.gov/articles/PMC11717270/).
 
-## Research sources (APA 7)
+## Full references (APA 7)
 
 Kamakura, N. (2022). From globalising to regionalising to reshoring value chains? The case of Japan’s semiconductor industry. *Cambridge Journal of Regions, Economy and Society, 15*(2), 261–277. https://doi.org/10.1093/cjres/rsac010
 
@@ -59,4 +62,6 @@ Zamani, E. D., Smyth, C., Gupta, S., & Dennehy, D. (2023). Artificial intelligen
 
 ---
 
-**Interpretive note:** This poster compares proposed responses and published evidence; it does not establish that any specific mix of strategies causes a measured increase in semiconductor supply-chain resilience.
+**Research note:** The evidence comes from published studies and industry or government reports. The poster compares these findings rather than claiming that a particular combination of strategies has been proven to increase semiconductor supply-chain resilience.
+
+[Back to the formatted references page](https://saakshhh.github.io/research/semiconductor-resilience-poster-references.html)
