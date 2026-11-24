@@ -1,5 +1,7 @@
 # Beyond Reshoring: References and Figure Notes
 
+**[View the research poster (PDF)](https://saakshhh.github.io/research/semiconductor-resilience-research-poster.pdf)**  
+
 **[Open the formatted references page](https://saakshhh.github.io/research/semiconductor-resilience-poster-references.html)**  
 *For a cleaner reading experience on your phone, including the chart data, source notes, and full bibliography.*
 
